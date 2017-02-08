@@ -7,6 +7,8 @@ add_theme_support( 'post-thumbnails' );
 add_image_size( 'img_blog', 312, 234, true );
 add_image_size( 'img_avatar', 96, 96, true );
 add_image_size( 'img_author_avatar', 130, 130, true );
+add_image_size( 'img_author_thumb', 58, 58, true );
+add_image_size( 'img_author_slider', 668, 374, true );
 // remove filter of wpautop
 remove_filter( 'the_excerpt', 'wpautop' );
 remove_filter( 'the_content', 'wpautop' );

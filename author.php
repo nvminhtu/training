@@ -11,17 +11,48 @@
             $fullname = $firstname.' '.$lastname;
             $nicename = get_the_author_meta( 'user_nicename', $author_id );
             $description = get_field('description', 'user_'. $author_id);
+            $editor_gallery = get_field('profile_picture', 'user_'. $author_id);
           ?>
 
           <!-- editor pictures / video -->
           <div class="tr_top_main clearfix">
             <div id="tr_slider_out" class="clearfix">
               <ul id="traijing_slider01">
-                <li><img src="<?php bloginfo('template_url'); ?>/images/traijing_img_slider01.jpg" alt=""></li>
-                <li><img src="<?php bloginfo('template_url'); ?>/images/traijing_img_slider01.jpg" alt=""></li>
-                <li><img src="<?php bloginfo('template_url'); ?>/images/traijing_img_slider01.jpg" alt=""></li>
+                <?php // loop author slider main
+                    $i = 0;
+                    if( $editor_gallery ): 
+                    foreach( $editor_gallery as $image ): 
+                      if($i<3) {
+                    ?>
+                      <li>
+                        <img src="<?php echo $image['sizes']['img_author_slider']; ?>" alt="<?php echo $image['alt']; ?>" />
+                      </li>  
+                    <?php } 
+                    $i++; 
+                    endforeach; 
+                    
+                  endif; 
+                  // end loop author thumb
+                ?>
               </ul>
-              <div id="tr_slider_pager"> <a data-slide-index="0" href=""><img src="<?php bloginfo('template_url'); ?>/images/traijing_thumb_slider01.jpg" /></a> <a data-slide-index="1" href=""><img src="<?php bloginfo('template_url'); ?>/images/traijing_thumb_slider02.jpg" /></a> <a data-slide-index="2" href=""><img src="<?php bloginfo('template_url'); ?>/images/traijing_thumb_slider03.jpg" /></a> </div>
+
+              <div id="tr_slider_pager">
+                <?php // loop author thumb
+                    $j = 0;
+                    if( $editor_gallery ): 
+                    foreach( $editor_gallery as $image ): 
+                      if($j<3) {
+                    ?>
+                      <a data-slide-index="<?php echo $j; ?>" href=""> <img src="<?php echo $image['sizes']['img_author_thumb']; ?>" alt="<?php echo $image['alt']; ?>" />
+                      </a>  
+                    <?php } 
+                    $j++;
+                    endforeach;
+                  endif; 
+                  // end loop author thumb
+                ?>
+              </div>
+
             </div>
           </div>
           <!-- end editor pictures / video -->
