@@ -5,57 +5,86 @@
       <div id="content" class="clearfix">
         <div class="traijing_box_top clearfix">
           <?php 
-            $author_id = get_the_author_meta('ID');
-            $firstname = get_the_author_meta( 'user_firstname',$author_id );
-            $lastname = get_the_author_meta( 'user_lastname', $author_id );
-            $fullname = $firstname.' '.$lastname;
-            $nicename = get_the_author_meta( 'user_nicename', $author_id );
-            $description = get_field('description', 'user_'. $author_id);
-            $editor_gallery = get_field('profile_picture', 'user_'. $author_id);
+              $author = get_queried_object();
+              $author_id = $author->ID;
+              $firstname = get_the_author_meta( 'user_firstname',$author_id );
+              $lastname = get_the_author_meta( 'user_lastname', $author_id );
+              $fullname = $firstname.' '.$lastname;
+              $nicename = get_the_author_meta( 'user_nicename', $author_id );
+              $description = get_field('description', 'user_'. $author_id);
+              $focus_topic = get_field('focus_topic', 'user_'. $author_id);
+              $promotion_video = get_field('promotion_video', 'user_'. $author_id);
+              $editor_gallery = get_field('profile_picture', 'user_'. $author_id);
+              $editor_avatar_tiny = $editor_gallery[0]['sizes']['img_author_tiny'];
           ?>
-
-          <!-- editor pictures / video -->
+         
+          <!-- ###editor pictures / video -->
           <div class="tr_top_main clearfix">
-            <div id="tr_slider_out" class="clearfix">
-              <ul id="traijing_slider01">
-                <?php // loop author slider main
-                    $i = 0;
-                    if( $editor_gallery ): 
-                    foreach( $editor_gallery as $image ): 
-                      if($i<3) {
-                    ?>
-                      <li>
-                        <img src="<?php echo $image['sizes']['img_author_slider']; ?>" alt="<?php echo $image['alt']; ?>" />
-                      </li>  
-                    <?php } 
-                    $i++; 
-                    endforeach; 
-                    
-                  endif; 
-                  // end loop author thumb
-                ?>
-              </ul>
+            
 
-              <div id="tr_slider_pager">
-                <?php // loop author thumb
-                    $j = 0;
-                    if( $editor_gallery ): 
-                    foreach( $editor_gallery as $image ): 
-                      if($j<3) {
-                    ?>
-                      <a data-slide-index="<?php echo $j; ?>" href=""> <img src="<?php echo $image['sizes']['img_author_thumb']; ?>" alt="<?php echo $image['alt']; ?>" />
-                      </a>  
-                    <?php } 
-                    $j++;
-                    endforeach;
-                  endif; 
-                  // end loop author thumb
+            <?php 
+              if(isset($promotion_video)&&$promotion_video!='') { 
+                //01. IF has VIDEO
+            ?>
+              <div id="tr_slider_out" class="clearfix">
+                <?php //1.1 Vimeo
+                  if(preg_match('/https:\/\/(www\.)*vimeo\.com\/.*/',$promotion_video)){ 
                 ?>
-              </div>
+                  <iframe src="https://player.vimeo.com/video/57399324" width="668" height="374" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                <?php } ?>
 
-            </div>
+                <?php //1.2 Youtube
+                  if(preg_match('/https:\/\/(www\.)*youtube\.com\/.*/',$promotion_video)){ 
+                ?>
+                    <iframe width="668" height="374" src="https://www.youtube.com/embed/jovTHH9yrHY" frameborder="0" allowfullscreen></iframe>
+                <?php } ?>
+
+                <p>Video here!!!</p>
+              </div> 
+
+            <?php } else {  
+                //02. IF doesn't have VIDEO
+            ?>
+              <div id="tr_slider_out" class="clearfix">
+                <ul id="traijing_slider01">
+                  <?php // loop author slider main
+                      $i = 0;
+                      if( $editor_gallery ): 
+                      foreach( $editor_gallery as $image ): 
+                        if($i<3) {
+                      ?>
+                        <li>
+                          <img src="<?php echo $image['sizes']['img_author_slider']; ?>" alt="<?php echo $image['alt']; ?>"/>
+                        </li>  
+                      <?php } 
+                      $i++; 
+                      endforeach; 
+                      
+                    endif; 
+                    // end loop author thumb
+                  ?>
+                </ul>
+
+                <div id="tr_slider_pager">
+                  <?php // loop author thumb
+                      $j = 0;
+                      if( $editor_gallery ): 
+                      foreach( $editor_gallery as $image ): 
+                        if($j<3) {
+                      ?>
+                        <a data-slide-index="<?php echo $j; ?>" href=""> <img src="<?php echo $image['sizes']['img_author_thumb']; ?>" width="58" height="58" alt="<?php echo $image['alt']; ?>" />
+                        </a>  
+                      <?php } 
+                      $j++;
+                      endforeach;
+                    endif; 
+                    // end loop author thumb
+                  ?>
+                </div>
+              <!-- #tr_slider_out --></div>
+            <?php } ?>
           </div>
-          <!-- end editor pictures / video -->
+          <!-- ###end editor pictures / video -->
 
           <!-- editor information -->
           <div class="tr_top_info clearfix">
@@ -67,11 +96,12 @@
               <?php echo $description; ?>
             </p>
 
-            <!-- //comment out Followers and Follow Button
+           
             <div class="box_focus clearfix">
               <p class="ttl_fc">Focus!</p>
-              <p class="list_fc">ヨガ, 新体操, スーパーフード, 加圧トレーニング, トライアスロン, スイーツダイエット</p>
+              <div class="list_fc"><?php echo $focus_topic; ?></div>
             </div>
+             <!-- //comment out Followers and Follow Button
             <p class="traijing_fl">4,672 フォロワー</p>
             <p class="btn_fl"><a href="">+ フォロー</a></p> -->
 
@@ -82,310 +112,55 @@
 
         <div class="ct_article_box clearfix">
           <div class="ct_article_list_out clearfix"> 
-            <!-- ct_article_list -->
-            <div class="list_ct_article clearfix">
-              <div class="list_ct_article_img">
-                <p><a href="#"><img src="<?php bloginfo('template_url'); ?>/images/traijing_article_list_img01.jpg" alt=""></a></p>
-              </div>
-              <div class="list_ct_article_ct">
-                <p class="list_ct_article_title"><a href="#">イヤホン・ヘッドホン特集！スポーツしながらでも邪魔にならない導入すべき音楽ツールラインナップ</a></p>
-                <p class="list_ct_article_txt">bluetooth接続が可能なイヤホンも多数販売されるようになり、それぞれの特徴や価格帯からどの商品がいいのかを厳選してみました。人それぞれの良し悪しがありますが、機能性と価格帯を中心に絞り込んでみました。実際の...</p>
-                <div class="list_ct_article_info clearfix">
-                  <ul>
-                    <li class="ct_date01">2016.07.18</li>
-                    <li class="ct_view01">43,215</li>
-                    <li class="ct_heart">442</li>
-                  </ul>
-                  <p class="pl_auther"><span><img src="<?php bloginfo('template_url'); ?>/images/img_auther01.png" alt=""></span>meri_moko4</p>
-                </div>
-              </div>
-            </div>
-            <!-- // end: ct_article_list --> 
-            <!-- ct_article_list -->
-            <div class="list_ct_article clearfix">
-              <div class="list_ct_article_img">
-                <p><a href="#"><img src="<?php bloginfo('template_url'); ?>/images/traijing_article_list_img01.jpg" alt=""></a></p>
-              </div>
-              <div class="list_ct_article_ct">
-                <p class="list_ct_article_title"><a href="#">まだまだ間に合う！ジムを冬に始めるべきビックリな理由</a></p>
-                <p class="list_ct_article_txt">bluetooth接続が可能なイヤホンも多数販売されるようになり、それぞれの特徴や価格帯からどの商品がいいのかを厳選してみました。人それぞれの良し悪しがありますが、機能性と価格帯を中心に絞り込んでみました。実際の...</p>
-                <div class="list_ct_article_info clearfix">
-                  <ul>
-                    <li class="ct_date">2016.07.18</li>
-                    <li class="ct_view01">43,215</li>
-                    <li class="ct_heart">442</li>
-                  </ul>
-                  <p class="pl_auther"><span><img src="<?php bloginfo('template_url'); ?>/images/img_auther01.png" alt=""></span>meri_moko4</p>
-                </div>
-              </div>
-            </div>
-            <!-- // end: ct_article_list --> 
-            <!-- ct_article_list -->
-            <div class="list_ct_article clearfix">
-              <div class="list_ct_article_img">
-                <p><a href="#"><img src="<?php bloginfo('template_url'); ?>/images/traijing_article_list_img01.jpg" alt=""></a></p>
-              </div>
-              <div class="list_ct_article_ct">
-                <p class="list_ct_article_title"><a href="#">まだまだ間に合う！ジムを冬に始めるべきビックリな理由</a></p>
-                <p class="list_ct_article_txt">bluetooth接続が可能なイヤホンも多数販売されるようになり、それぞれの特徴や価格帯からどの商品がいいのかを厳選してみました。人それぞれの良し悪しがありますが、機能性と価格帯を中心に絞り込んでみました。実際の...</p>
-                <div class="list_ct_article_info clearfix">
-                  <ul>
-                    <li class="ct_date">2016.07.18</li>
-                    <li class="ct_view01">43,215</li>
-                    <li class="ct_heart">442</li>
-                  </ul>
-                  <p class="pl_auther"><span><img src="<?php bloginfo('template_url'); ?>/images/img_auther01.png" alt=""></span>meri_moko4</p>
-                </div>
-              </div>
-            </div>
-            <!-- // end: ct_article_list --> 
-            <!-- ct_article_list -->
-            <div class="list_ct_article clearfix">
-              <div class="list_ct_article_img">
-                <p><a href="#"><img src="<?php bloginfo('template_url'); ?>/images/traijing_article_list_img01.jpg" alt=""></a></p>
-              </div>
-              <div class="list_ct_article_ct">
-                <p class="list_ct_article_title"><a href="#">まだまだ間に合う！ジムを冬に始めるべきビックリな理由</a></p>
-                <p class="list_ct_article_txt">bluetooth接続が可能なイヤホンも多数販売されるようになり、それぞれの特徴や価格帯からどの商品がいいのかを厳選してみました。人それぞれの良し悪しがありますが、機能性と価格帯を中心に絞り込んでみました。実際の...</p>
-                <div class="list_ct_article_info clearfix">
-                  <ul>
-                    <li class="ct_date">2016.07.18</li>
-                    <li class="ct_view01">43,215</li>
-                    <li class="ct_heart">442</li>
-                  </ul>
-                  <p class="pl_auther"><span><img src="<?php bloginfo('template_url'); ?>/images/img_auther01.png" alt=""></span>meri_moko4</p>
-                </div>
-              </div>
-            </div>
-            <!-- // end: ct_article_list --> 
-            <!-- ct_article_list -->
-            <div class="list_ct_article clearfix">
-              <div class="list_ct_article_img">
-                <p><a href="#"><img src="<?php bloginfo('template_url'); ?>/images/traijing_article_list_img01.jpg" alt=""></a></p>
-              </div>
-              <div class="list_ct_article_ct">
-                <p class="list_ct_article_title"><a href="#">まだまだ間に合う！ジムを冬に始めるべきビックリな理由</a></p>
-                <p class="list_ct_article_txt">bluetooth接続が可能なイヤホンも多数販売されるようになり、それぞれの特徴や価格帯からどの商品がいいのかを厳選してみました。人それぞれの良し悪しがありますが、機能性と価格帯を中心に絞り込んでみました。実際の...</p>
-                <div class="list_ct_article_info clearfix">
-                  <ul>
-                    <li class="ct_date">2016.07.18</li>
-                    <li class="ct_view01">43,215</li>
-                    <li class="ct_heart">442</li>
-                  </ul>
-                  <p class="pl_auther"><span><img src="<?php bloginfo('template_url'); ?>/images/img_auther01.png" alt=""></span>meri_moko4</p>
-                </div>
-              </div>
-            </div>
-            <!-- // end: ct_article_list --> 
-            <!-- ct_article_list -->
-            <div class="list_ct_article clearfix">
-              <div class="list_ct_article_img">
-                <p><a href="#"><img src="<?php bloginfo('template_url'); ?>/images/traijing_article_list_img01.jpg" alt=""></a></p>
-              </div>
-              <div class="list_ct_article_ct">
-                <p class="list_ct_article_title"><a href="#">まだまだ間に合う！ジムを冬に始めるべきビックリな理由</a></p>
-                <p class="list_ct_article_txt">bluetooth接続が可能なイヤホンも多数販売されるようになり、それぞれの特徴や価格帯からどの商品がいいのかを厳選してみました。人それぞれの良し悪しがありますが、機能性と価格帯を中心に絞り込んでみました。実際の...</p>
-                <div class="list_ct_article_info clearfix">
-                  <ul>
-                    <li class="ct_date">2016.07.18</li>
-                    <li class="ct_view01">43,215</li>
-                    <li class="ct_heart">442</li>
-                  </ul>
-                  <p class="pl_auther"><span><img src="<?php bloginfo('template_url'); ?>/images/img_auther01.png" alt=""></span>meri_moko4</p>
-                </div>
-              </div>
-            </div>
-            <!-- // end: ct_article_list --> 
-            <!-- ct_article_list -->
-            <div class="list_ct_article clearfix">
-              <div class="list_ct_article_img">
-                <p><a href="#"><img src="<?php bloginfo('template_url'); ?>/images/traijing_article_list_img01.jpg" alt=""></a></p>
-              </div>
-              <div class="list_ct_article_ct">
-                <p class="list_ct_article_title"><a href="#">まだまだ間に合う！ジムを冬に始めるべきビックリな理由</a></p>
-                <p class="list_ct_article_txt">bluetooth接続が可能なイヤホンも多数販売されるようになり、それぞれの特徴や価格帯からどの商品がいいのかを厳選してみました。人それぞれの良し悪しがありますが、機能性と価格帯を中心に絞り込んでみました。実際の...</p>
-                <div class="list_ct_article_info clearfix">
-                  <ul>
-                    <li class="ct_date">2016.07.18</li>
-                    <li class="ct_view01">43,215</li>
-                    <li class="ct_heart">442</li>
-                  </ul>
-                  <p class="pl_auther"><span><img src="<?php bloginfo('template_url'); ?>/images/img_auther01.png" alt=""></span>meri_moko4</p>
-                </div>
-              </div>
-            </div>
-            <!-- // end: ct_article_list --> 
-            <!-- ct_article_list -->
-            <div class="list_ct_article clearfix">
-              <div class="list_ct_article_img">
-                <p><a href="#"><img src="<?php bloginfo('template_url'); ?>/images/traijing_article_list_img01.jpg" alt=""></a></p>
-              </div>
-              <div class="list_ct_article_ct">
-                <p class="list_ct_article_title"><a href="#">まだまだ間に合う！ジムを冬に始めるべきビックリな理由</a></p>
-                <p class="list_ct_article_txt">bluetooth接続が可能なイヤホンも多数販売されるようになり、それぞれの特徴や価格帯からどの商品がいいのかを厳選してみました。人それぞれの良し悪しがありますが、機能性と価格帯を中心に絞り込んでみました。実際の...</p>
-                <div class="list_ct_article_info clearfix">
-                  <ul>
-                    <li class="ct_date">2016.07.18</li>
-                    <li class="ct_view01">43,215</li>
-                    <li class="ct_heart">442</li>
-                  </ul>
-                  <p class="pl_auther"><span><img src="<?php bloginfo('template_url'); ?>/images/img_auther01.png" alt=""></span>meri_moko4</p>
-                </div>
-              </div>
-            </div>
-            <!-- // end: ct_article_list --> 
-            <!-- ct_article_list -->
-            <div class="list_ct_article clearfix">
-              <div class="list_ct_article_img">
-                <p><a href="#"><img src="<?php bloginfo('template_url'); ?>/images/traijing_article_list_img01.jpg" alt=""></a></p>
-              </div>
-              <div class="list_ct_article_ct">
-                <p class="list_ct_article_title"><a href="#">まだまだ間に合う！ジムを冬に始めるべきビックリな理由</a></p>
-                <p class="list_ct_article_txt">bluetooth接続が可能なイヤホンも多数販売されるようになり、それぞれの特徴や価格帯からどの商品がいいのかを厳選してみました。人それぞれの良し悪しがありますが、機能性と価格帯を中心に絞り込んでみました。実際の...</p>
-                <div class="list_ct_article_info clearfix">
-                  <ul>
-                    <li class="ct_date">2016.07.18</li>
-                    <li class="ct_view01">43,215</li>
-                    <li class="ct_heart">442</li>
-                  </ul>
-                  <p class="pl_auther"><span><img src="<?php bloginfo('template_url'); ?>/images/img_auther01.png" alt=""></span>meri_moko4</p>
-                </div>
-              </div>
-            </div>
-            <!-- // end: ct_article_list --> 
-            <!-- ct_article_list -->
-            <div class="list_ct_article clearfix">
-              <div class="list_ct_article_img">
-                <p><a href="#"><img src="<?php bloginfo('template_url'); ?>/images/traijing_article_list_img01.jpg" alt=""></a></p>
-              </div>
-              <div class="list_ct_article_ct">
-                <p class="list_ct_article_title"><a href="#">まだまだ間に合う！ジムを冬に始めるべきビックリな理由</a></p>
-                <p class="list_ct_article_txt">bluetooth接続が可能なイヤホンも多数販売されるようになり、それぞれの特徴や価格帯からどの商品がいいのかを厳選してみました。人それぞれの良し悪しがありますが、機能性と価格帯を中心に絞り込んでみました。実際の...</p>
-                <div class="list_ct_article_info clearfix">
-                  <ul>
-                    <li class="ct_date">2016.07.18</li>
-                    <li class="ct_view01">43,215</li>
-                    <li class="ct_heart">442</li>
-                  </ul>
-                  <p class="pl_auther"><span><img src="<?php bloginfo('template_url'); ?>/images/img_auther01.png" alt=""></span>meri_moko4</p>
-                </div>
-              </div>
-            </div>
-            <!-- // end: ct_article_list --> 
-          </div>
-        </div>
+            <?php if ( have_posts() ) :
+                  // Start the Loop.
+                while ( have_posts() ) : the_post(); 
+                  $thumb = get_post_thumbnail_id();
+                  $img_url = wp_get_attachment_url($thumb,'img_blog_list'); 
+                ?>
+                    <div class="list_ct_article clearfix">
+                      <div class="list_ct_article_img">
+                        <p><a href="#"><img src="<?php echo $img_url; ?>" alt="<?php the_title(); ?>"></a></p>
+                      </div>
+                      <div class="list_ct_article_ct">
+                        <p class="list_ct_article_title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
+                        <p class="list_ct_article_txt">
+                        <?php //show content limited
+                            $content_display = mb_substr(wp_strip_all_tags( get_the_content()), 0, 120, 'UTF-8'); 
+                              $content_length = mb_strlen($content_display);
+                            if($content_length > 119) {
+                              echo $content_display.' ...';
+                            } else {
+                              echo $content_display;
+                            }
+                          ?>
+                        </p>
+                        <div class="list_ct_article_info clearfix">
+                          <ul>
+                            <li class="ct_date01"><?php the_date('Y.m.d'); ?></li>
+                            <li class="ct_view01">43,215</li>
+                            <li class="ct_heart">442</li>
+                          </ul>
+                          <p class="pl_auther"><span><img src="<?php echo $editor_avatar_tiny; ?>" alt=""></span><?php echo $nicename; ?></p>
+                        </div>
+                      </div>
+                    </div>
+                <?php  endwhile; // End the loop.
+
+                wp_pagenavi(); //pagination
+              else :
+                  //no post here
+              endif;
+            ?>
+          <!-- ct_article_list_out --></div>
+
+          <?php include('parts/other-authors.php'); ?>
+
+        <!-- ct_article_box --></div>
+        
       </div>
       <!-- start : #navi -->
-      <div id="navi" class="navi clearfix">
-        <div class="navi_ad01 clearfix">
-          <div class="navi_ad01_in">
-            <p><img src="<?php bloginfo('template_url'); ?>/images/navi_ad01.jpg" alt=""></p>
-          </div>
-        </div>
-        <div class="list_navi list_navi01 clearfix">
-          <dl>
-            <dt>ジム入門！初心者特集 <span>これから開始される方へのアドバイス！</span></dt>
-            <dd>
-              <div class="list_latestpost_sb_img">
-                <p><a href="#"><img src="<?php bloginfo('template_url'); ?>/images/img_dummy02.jpg" alt=""></a></p>
-              </div>
-              <div class="list_latestpost_sb_ct">
-                <p class="list_latestpost_sb_title"><a href="#">まだまだ間に合う！ジムを冬に始めるべきビックリな理由</a></p>
-                <p class="list_latestpost_sb_info clearfix"><span class="nauther01">supsestarkei</span><span class="nview">66,539</span></p>
-              </div>
-            </dd>
-            <dd>
-              <div class="list_latestpost_sb_img">
-                <p><a href="#"><img src="<?php bloginfo('template_url'); ?>/images/img_dummy02.jpg" alt=""></a></p>
-              </div>
-              <div class="list_latestpost_sb_ct">
-                <p class="list_latestpost_sb_title"><a href="#">まだまだ間に合う！ジムを冬に始めるべきビックリな理由</a></p>
-                <p class="list_latestpost_sb_info clearfix"><span class="nauther01">supsestarkei</span><span class="nview">66,539</span></p>
-              </div>
-            </dd>
-            <dd>
-              <div class="list_latestpost_sb_img">
-                <p><a href="#"><img src="<?php bloginfo('template_url'); ?>/images/img_dummy02.jpg" alt=""></a></p>
-              </div>
-              <div class="list_latestpost_sb_ct">
-                <p class="list_latestpost_sb_title"><a href="#">まだまだ間に合う！ジムを冬に始めるべきビックリな理由</a></p>
-                <p class="list_latestpost_sb_info clearfix"><span class="nauther01">supsestarkei</span><span class="nview">66,539</span></p>
-              </div>
-            </dd>
-            <dd>
-              <div class="list_latestpost_sb_img">
-                <p><a href="#"><img src="<?php bloginfo('template_url'); ?>/images/img_dummy02.jpg" alt=""></a></p>
-              </div>
-              <div class="list_latestpost_sb_ct">
-                <p class="list_latestpost_sb_title"><a href="#">まだまだ間に合う！ジムを冬に始めるべきビックリな理由</a></p>
-                <p class="list_latestpost_sb_info clearfix"><span class="nauther01">supsestarkei</span><span class="nview">66,539</span></p>
-              </div>
-            </dd>
-          </dl>
-          <p class="link01"><a href="#">ジム入門！初心者特集</a></p>
-        </div>
-        <div class="navi_ad02 clearfix">
-          <div class="navi_ad01_in">
-            <p><img src="<?php bloginfo('template_url'); ?>/images/navi_ad02.jpg" alt=""></p>
-          </div>
-        </div>
-        <div class="navi02 clearfix">
-          <div class="list_navi list_navi01 clearfix">
-            <dl>
-              <dt>アクセスランキング<span>最近投稿された記事の順位</span></dt>
-              <dd>
-                <div class="list_latestpost_sb_img">
-                  <p><a href="#"><img src="<?php bloginfo('template_url'); ?>/images/img_dummy02.jpg" alt=""><span class="certi certi01">1</span></a></p>
-                </div>
-                <div class="list_latestpost_sb_ct">
-                  <p class="list_latestpost_sb_title"><a href="#">まだまだ間に合う！ジムを冬に始めるべきビックリな理由</a></p>
-                  <p class="list_latestpost_sb_info clearfix"><span class="nauther01">supsestarkei</span><span class="nview">66,539</span></p>
-                </div>
-              </dd>
-              <dd>
-                <div class="list_latestpost_sb_img">
-                  <p><a href="#"><img src="<?php bloginfo('template_url'); ?>/images/img_dummy02.jpg" alt=""><span class="certi certi02">2</span></a></p>
-                </div>
-                <div class="list_latestpost_sb_ct">
-                  <p class="list_latestpost_sb_title"><a href="#">まだまだ間に合う！ジムを冬に始めるべきビックリな理由</a></p>
-                  <p class="list_latestpost_sb_info clearfix"><span class="nauther01">supsestarkei</span><span class="nview">66,539</span></p>
-                </div>
-              </dd>
-              <dd>
-                <div class="list_latestpost_sb_img">
-                  <p><a href="#"><img src="<?php bloginfo('template_url'); ?>/images/img_dummy02.jpg" alt=""><span class="certi certi03">3</span></a></p>
-                </div>
-                <div class="list_latestpost_sb_ct">
-                  <p class="list_latestpost_sb_title"><a href="#">まだまだ間に合う！ジムを冬に始めるべきビックリな理由</a></p>
-                  <p class="list_latestpost_sb_info clearfix"><span class="nauther01">supsestarkei</span><span class="nview">66,539</span></p>
-                </div>
-              </dd>
-            </dl>
-            <p class="link01"><a href="#">ランキングを見る</a></p>
-          </div>
-          <div class="list_navi clearfix">
-            <dl>
-              <dt>話題のキーワード<span>注目されている言葉</span></dt>
-              <dd>
-                <ul class="list_tag01">
-                  <li><a href="#">トレーニング</a></li>
-                  <li><a href="#">トレ</a></li>
-                  <li><a href="#">トレーニ</a></li>
-                  <li><a href="#">トレー</a></li>
-                  <li><a href="#">トレーニ</a></li>
-                  <li><a href="#">トレーニング</a></li>
-                  <li><a href="#">トレーニング</a></li>
-                  <li><a href="#">トレーニング</a></li>
-                  <li><a href="#">トレーニング</a></li>
-                  <li><a href="#">トレーニ</a></li>
-                  <li><a href="#">トレーニング</a></li>
-                </ul>
-              </dd>
-            </dl>
-            <p class="link01"><a href="#">他のキーワード</a></p>
-          </div>
-        </div>
-      </div>
+      <?php get_sidebar(); ?>
       <!-- end : #navi --> 
     </div>
   </div>

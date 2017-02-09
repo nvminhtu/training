@@ -34,7 +34,7 @@
 		            <div class="article_detail_cm_au clearfix">
 		              <p class="cm_img">
 		                <?php if( $editor_gallery ): ?>
-					  		<img src="<?php echo $editor_avatar_url; ?>" alt="">
+					  		<a href="<?php echo get_author_posts_url( $author_id); ?>"><img src="<?php echo $editor_avatar_url; ?>" alt=""></a>
 						<?php endif; ?>
 		              </p>
 		              <p class="cm_aname"><?php echo $fullname; ?></p>
@@ -76,7 +76,7 @@
       </div>
       <!-- start : #navi -->
       <?php get_sidebar(); ?>
-      
+      <!-- end : #navi --> 
     </div>
   </div>
   

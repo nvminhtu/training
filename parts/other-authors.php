@@ -31,7 +31,7 @@
             $editor_avatar_url = $editor_gallery[0]['sizes']['img_author_avatar'];
             echo '<div class="torejin_bx01">';
          ?>
-            <p class="torejin_img"><a href="<?php echo get_author_posts_url( $author_id); ?>"><img src="<?php echo $editor_avatar_url; ?>" alt="" /></a></p>
+            <p class="torejin_img"><a href="<?php echo get_author_posts_url( $author_id); ?>"><img src="<?php echo $editor_avatar_url; ?>" alt="" width="130" height="130" /></a></p>
             <p class="torejin_name"><?php echo $fullname; ?></p>
          <?php   
             echo '</div>';

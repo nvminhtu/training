@@ -1,14 +1,33 @@
 /*
-Theme Name: Groovoost
-Theme URI: http://www.groovoost.com/
-Author: Groovoost
-Author URI: http://www.groovoost.com/
-Description: Groovoost
+Theme Name: Traijing
+Theme URI: http://www.traijing.com/
+Author: Traijing
+Author URI: http://www.traijing.com/
+Description: Traijing
 Version: 1
-License: Groovoost
-License URI: http://www.groovoost.com/
-Tags: Groovoost
-Text Domain: Groovoost
+License: Traijing
+License URI: http://www.traijing.com/
+Tags: Traijing
+Text Domain: Traijing
 */
 
 /** Extra Task: Social Network**/
+.wp-tag-cloud li {
+    background: url(images/icon_tag01.png) 5px center no-repeat;
+    background-size: 12px;
+    float: left;
+    padding: 0 6px 0 20px;
+    border: 1px solid #E7E7E7;
+    margin: 0 6px 6px 0;
+    line-height: 23px;
+    font-size: 12px;
+}
+.wp-tag-cloud li a {
+    color: #484848;
+    text-decoration: none;
+}
+.list_fc p {
+    font-size: 13px;
+    color: #333333;
+    margin-bottom: 0;
+}

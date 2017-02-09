@@ -95,7 +95,8 @@
             <dl>
               <dt>話題のキーワード<span>注目されている言葉</span></dt>
               <dd>
-                <ul class="list_tag01">
+                <?php wp_tag_cloud( 'format=list&orderby=count&order=DESC' ); ?>
+               <!--  <ul class="list_tag01">
                   <li><a href="#">トレーニング</a></li>
                   <li><a href="#">トレ</a></li>
                   <li><a href="#">トレーニ</a></li>
@@ -107,7 +108,7 @@
                   <li><a href="#">トレーニング</a></li>
                   <li><a href="#">トレーニ</a></li>
                   <li><a href="#">トレーニング</a></li>
-                </ul>
+                </ul> -->
               </dd>
             </dl>
             <p class="link01"><a href="#">他のキーワード</a></p>
