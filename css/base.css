@@ -97,7 +97,7 @@ address {
 .clear {
 	clear: both;
 }
-.clearfix:after, .col:after,.contact_f dl:after {
+.clearfix:after, .col:after {
 	content: ".";
 	display: block;
 	height: 0;
@@ -105,7 +105,7 @@ address {
 	visibility: hidden;
 	font-size: 0;
 }
-.clearfix, .col, .box_company dl,.contact_f dl {
+.clearfix, .col, .box_company dl {
 	display: inline-block;
 }
 /* Hides from IE-mac \*/

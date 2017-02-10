@@ -7,7 +7,7 @@
 			if ( ! empty( $categories ) ) {
 			    echo '<a href="' . esc_url( get_category_link( $categories[0]->term_id ) ) . '">' . esc_html( $categories[0]->name ) . '</a>';
 			}
- 		?>
+ 		?>&gt;
     </li>
     <li>ルミネーションよりも私を見て？星屑宿るまぶたとほっぺの輝きメイク How to</li>
   </ul>

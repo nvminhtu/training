@@ -50,6 +50,39 @@ h6.bh {
 	word-wrap: break-word;
 	color: #009e96;
 }
+
+
+.dlstb {
+	margin-top:20px;
+	margin-bottom: 50px;
+}
+.dlstb dl {
+	margin-bottom: 2px;
+	width: 100%;
+	display: table;
+}
+.dlstb dt {
+	font-weight: bold;
+	/*width: 26.25%;*/
+	width: 30%;
+	box-sizing: border-box;
+	background: #009E96;
+	color:#fff;
+	padding: 15px;
+	border-right: 2px solid #fff;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+.dlstb dd {
+	display: table-cell;
+	box-sizing: border-box;
+	width: 70%;
+	padding: 15px;
+	background: #F4F4F4;
+}
+
+
 .under #main {
 	width: 1400px;
 	margin: 0 auto;
@@ -95,21 +128,25 @@ h2.ttl_h201 {
 	padding: 15px 18px;
 }
 .list_ct_article_img {
-	display: table-cell;
+
 	height: 164px;
 	transition: all .2s ease-in-out 0s;
 	vertical-align: top;
 	width: 220px;
 	position: relative;
+	float:left;
 }
 .list_ct_article_img p {
 	margin: 0;
 }
 .list_ct_article_ct {
-	display: table-cell;
+
 	padding: 10px 0 0 20px;
 	vertical-align: top;
 	text-align: left;
+	width:calc(100% - 220px);
+	float:left;
+	box-sizing:border-box;
 }
 .list_ct_article_title {
 	margin-bottom: 5px;
@@ -152,6 +189,10 @@ h2.ttl_h201 {
 	margin: 0 0 0 10px;
 	font-size: 14px;
 }
+.list_ct_article_info .pl_auther span img{
+	-webkit-border-radius: 28px;
+-moz-border-radius: 28px;
+border-radius: 28px;}
 .topic_path {
 	border-bottom: 1px solid #E5E5E5;
 	padding-bottom: 2px;
@@ -218,6 +259,11 @@ h2.ttl_h201 {
 }
 .cm_img {
 	float: right;
+}
+.cm_img img{
+	-webkit-border-radius: 96px;
+-moz-border-radius: 96px;
+border-radius: 96px;
 }
 .cm_aname {
 	font-size: 20px;

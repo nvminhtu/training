@@ -10,6 +10,7 @@
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <meta name="format-detection" content="telephone=no">
 <link href="<?php bloginfo('template_url'); ?>/css/fonts.css" rel="stylesheet" type="text/css" />
+<link  href="<?php bloginfo('template_url'); ?>/css/font-awesome.css" rel="stylesheet" type="text/css" />
 <link href="<?php bloginfo('template_url'); ?>/style.css" rel="stylesheet" type="text/css" />
 <link href="<?php bloginfo('template_url'); ?>/css/styles.css" rel="stylesheet" type="text/css" />
 <link href="<?php bloginfo('template_url'); ?>/css/menu.css" rel="stylesheet" type="text/css" />
@@ -79,7 +80,11 @@
 	      </div>
 	      <!-- Gnavi end -->
 	      <?php } ?>
-	      <div class="head_search"></div>
+	      <div class="head_search">
+	        <div class="icon-search-container" data-ic-class="search-trigger"> <span class="fa fa-search"></span>
+	          <input type="text" class="search-input" data-ic-class="search-input" placeholder="Search"/>
+	          <span class="fa fa-times-circle" data-ic-class="search-clear"></span> </div>
+	      </div>
 	      <!-- SP -->
 	      <div id="btn_menu"><a href="javascript:void(0)">
 	        <div id="nav-icon" class=""> <span></span> <span></span> <span></span> <span></span></div>
@@ -87,13 +92,20 @@
 	    </div>
     
 	    <!-- nav for SP -->
-	    <ul id="nav_menu_sp">
-	      <li><a href="#">トレーニング</a></li>
-	      <li><a href="#">健康・食品</a></li>
-	      <li><a href="#">スポーツ</a></li>
-	      <li><a href="#">ファッション</a></li>
-	      <li><a href="#">レジャー</a></li>
-	    </ul>
-	    <!-- nav for PC --> 
-	    <!-- SP --> 
+	     <div id="nav_gmenu_sp">
+	      <ul id="nav_menu_sp">
+	        <li><a href="#">トレーニング</a></li>
+	        <li><a href="#">健康・食品</a></li>
+	        <li><a href="#">スポーツ</a></li>
+	        <li><a href="#">ファッション</a></li>
+	        <li><a href="#">レジャー</a></li>
+	      </ul>
+	      <div class="search_nav clearfix">
+	        <div class="search_nav_inner">
+	          <input type="text" class="" placeholder="Search"/>
+	          <input type="submit" id="btn_search_nav" value="Search">
+	        </div>
+	      </div>
+	    </div>
+	    <!-- nav for SP -->
   	</div>

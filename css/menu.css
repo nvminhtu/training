@@ -34,7 +34,9 @@
 #btn_menu a {
 	text-decoration: none;
 }
-#nav_menu_sp {
+
+
+#nav_gmenu_sp{
 	position: fixed;
 	top: 52px;
 	left: 0;
@@ -42,6 +44,9 @@
 	display: none;
 	overflow: scroll;
 	padding-top: 15px;
+}
+#nav_menu_sp {
+	width: 100%;
 }
 #nav_menu_sp a {
 	text-decoration: none;
@@ -171,6 +176,66 @@
 	left: 50%;
 }
 
+
+.search_nav{
+	background:#fff;
+	padding:20px 0;
+}
+.search_nav{
+	text-align:center;
+}
+.search_nav_inner{
+  display: inline-block;
+  border: 2px solid #d9d9d9;
+  border-radius: 40px;
+  height: 40px;
+  width: calc(100% - 22px);
+  max-width:280px;
+  position: relative;
+  transition: width 0.2s;
+  backface-visibility: hidden;
+  margin:0 auto;
+
+	
+}
+
+#btn_search_nav{
+	
+}
+
+
+
+.search_nav_inner input[type="submit"] {
+	background: url(../images/btn_search_sticky.png) center center no-repeat;
+	background-size: 30px auto;
+	height: 30px;
+	width: 30px;
+	float: left;
+	border: none;
+	text-indent: -99999px;
+	transition: all 0.5s ease 0s;
+	cursor: pointer;
+	position:absolute;
+	left:5px;
+	top:4px;
+}
+
+
+.search_nav_inner input[type="text"] {
+    box-sizing: border-box;
+    background: none;
+    border: none;
+    color: #999;
+    float: right;
+    width: calc(100% - 38px);
+	margin-top:10px;
+}
+
+
+
+
+
+
 @media screen and (max-width:950px) {
 #btn_menu {
 	display: block;
@@ -178,7 +243,7 @@
 }
 
 @media screen and (min-width:951px) {
-#nav_menu_sp,#bg_box_out  {
+#nav_gmenu_sp,#bg_box_out  {
 	display: none !important;
 }
 }

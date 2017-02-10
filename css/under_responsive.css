@@ -48,6 +48,10 @@ h2.ttl_h201{
     height: 164px;
     width: 190px;
 }
+.list_ct_article_ct {
+	width:calc(100% - 190px);
+}
+
 .list_ct_article_title{
 	line-height:1.4em;
 }
@@ -175,6 +179,17 @@ h4.bh {
 h5.bh {
     border-bottom: 2px solid #c9c9c9;
 }
+
+.dlstb dt, .dlstb dd {
+	float: none;
+	width: 100%;
+	display: block;
+	border: none;
+	text-align: left;
+	padding: 10px;
+}
+
+
 .ptitle_01:after {
     border-top: 3px solid #009e96;
 }
@@ -282,6 +297,9 @@ h2.ttl_h201 {
     height: 150px;
     width: 150px;
 }
+.list_ct_article_ct {
+	width:calc(100% - 150px);
+}
 .list_ct_article_title a {
     font-size: 18px;
 }
@@ -335,6 +353,9 @@ h2.ttl_h201 {
 .list_ct_article_img {
     height: 100px;
     width: 100px;
+}
+.list_ct_article_ct {
+	width:calc(100% - 100px);
 }
 .list_ct_article_title a {
     font-size: 16px;
