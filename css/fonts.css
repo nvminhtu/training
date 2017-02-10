@@ -1,6 +1,5 @@
-
 /*	font-family: 'HuiFont';
-  font-family: 'Lato-Regular';
+
     font-family: 'LatoWebBlack';
    
     font-family: 'Lato-BlackItalic';
@@ -27,7 +26,7 @@
    
     font-family: 'Lato-MediumItalic';
     
-  
+    font-family: 'Lato-Regular';
    
     font-family: 'LatoWebSemibold';
    
@@ -36,7 +35,8 @@
     font-family: 'Lato-Thin';
    
     font-family: 'Lato-ThinItalic';*/
-	body {
+
+body {
 	font: 62.5% Meiryo, arial, clean, verdana, 'Hiragino Kaku Gothic Pro', "ＭＳ Ｐゴシック", Osaka, sans-serif;
 	color: #333;
 	line-height: 1.4;
@@ -294,3 +294,5 @@ li li, li dt, li dd, li input, li select, li button, li textarea, li p, li th, l
     font-weight: normal;
     text-rendering: optimizeLegibility;
 }
+
+

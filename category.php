@@ -27,7 +27,7 @@ get_header(); ?>
 			                <p><a href="<?php the_permalink(); ?>"><img src="<?php echo $img_url; ?>" alt="<?php the_title(); ?>"></a></p>
 			              </div>
 			              <div class="list_ct_article_ct">
-			                <p class="list_ct_article_title"><a href="#"><?php the_title(); ?></a></p>
+			                <p class="list_ct_article_title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
 			                <p class="list_ct_article_txt">
 				                <?php //show content limited
 		                            $content_display = mb_substr(wp_strip_all_tags( get_the_content()), 0, 120, 'UTF-8'); 
@@ -50,6 +50,8 @@ get_header(); ?>
 			              </div>
 			            </div>
 			<?php	endwhile;
+
+					wp_pagenavi(); //pagination
 				else :
 
 				endif;
