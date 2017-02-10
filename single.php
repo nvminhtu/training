@@ -34,7 +34,7 @@
 		            <div class="article_detail_cm_au clearfix">
 		              <p class="cm_img">
 		                <?php if( $editor_gallery ): ?>
-					  		<a href="<?php echo get_author_posts_url( $author_id); ?>"><img src="<?php echo $editor_avatar_url; ?>" alt=""></a>
+					  		<a href="<?php echo get_author_posts_url( $author_id); ?>"><img src="<?php echo $editor_avatar_url; ?>" width="96" height="96" alt="<?php echo $fullname; ?>"></a>
 						<?php endif; ?>
 		              </p>
 		              <p class="cm_aname"><?php echo $fullname; ?></p>

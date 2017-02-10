@@ -21,7 +21,6 @@
           <!-- ###editor pictures / video -->
           <div class="tr_top_main clearfix">
             
-
             <?php 
               if(isset($promotion_video)&&$promotion_video!='') { 
                 //01. IF has VIDEO
@@ -38,8 +37,6 @@
                 ?>
                     <iframe width="668" height="374" src="https://www.youtube.com/embed/jovTHH9yrHY" frameborder="0" allowfullscreen></iframe>
                 <?php } ?>
-
-                <p>Video here!!!</p>
               </div> 
 
             <?php } else {  
