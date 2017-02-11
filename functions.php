@@ -14,6 +14,7 @@ add_image_size( 'img_author_slider', 668, 9999);
 
 // add image for post
 add_image_size( 'img_blog_list', 220, 164, true );
+add_image_size( 'img_blog_list', 323, 200, true );
 
 // remove filter of wpautop
 // remove_filter( 'the_excerpt', 'wpautop' );

@@ -25,80 +25,9 @@
           <div class="ct_bnr01">
             <p><img src="<?php bloginfo('template_url'); ?>/images/bnr_tpoint.jpg" alt=""></p>
           </div>
-          <div class="list_c01 clearfix">
-            <div class="col3 col clearfix">
-              <div class="col_inner clearfix">
-                <div class="plist_info clearfix">
-                  <p class="pimg01"><img src="<?php bloginfo('template_url'); ?>/images/img_dummy01.jpg" alt=""><span><img src="<?php bloginfo('template_url'); ?>/images/icon_new01.png" alt=""></span></p>
-                  <div class="pl_bottom">
-                    <p class="pl_auther"><span><img src="<?php bloginfo('template_url'); ?>/images/img_auther01.png" alt=""></span>meri_moko4</p>
-                    <p class="pl_date">2016.12.24</p>
-                  </div>
-                </div>
-                <p class="pl_title">生活環境の違いによって起こる</p>
-              </div>
-            </div>
-            <div class="col3 col clearfix">
-              <div class="col_inner clearfix">
-                <div class="plist_info clearfix">
-                  <p class="pimg01"><img src="<?php bloginfo('template_url'); ?>/images/img_dummy01.jpg" alt=""><span><img src="<?php bloginfo('template_url'); ?>/images/icon_new01.png" alt=""></span></p>
-                  <div class="pl_bottom">
-                    <p class="pl_auther"><span><img src="<?php bloginfo('template_url'); ?>/images/img_auther01.png" alt=""></span>meri_moko4</p>
-                    <p class="pl_date">2016.12.24</p>
-                  </div>
-                </div>
-                <p class="pl_title">生活環境の違いによって起こる意外な体重への影響</p>
-              </div>
-            </div>
-            <div class="col3 col clearfix">
-              <div class="col_inner clearfix">
-                <div class="plist_info clearfix">
-                  <p class="pimg01"><img src="<?php bloginfo('template_url'); ?>/images/img_dummy01.jpg" alt=""><span><img src="<?php bloginfo('template_url'); ?>/images/icon_new01.png" alt=""></span></p>
-                  <div class="pl_bottom">
-                    <p class="pl_auther"><span><img src="<?php bloginfo('template_url'); ?>/images/img_auther01.png" alt=""></span>meri_moko4</p>
-                    <p class="pl_date">2016.12.24</p>
-                  </div>
-                </div>
-                <p class="pl_title">生活環境の違いによって</p>
-              </div>
-            </div>
-            <div class="col3 col clearfix">
-              <div class="col_inner clearfix">
-                <div class="plist_info clearfix">
-                  <p class="pimg01"><img src="<?php bloginfo('template_url'); ?>/images/img_dummy01.jpg" alt=""><span><img src="<?php bloginfo('template_url'); ?>/images/icon_new01.png" alt=""></span></p>
-                  <div class="pl_bottom">
-                    <p class="pl_auther"><span><img src="<?php bloginfo('template_url'); ?>/images/img_auther01.png" alt=""></span>meri_moko4</p>
-                    <p class="pl_date">2016.12.24</p>
-                  </div>
-                </div>
-                <p class="pl_title">生活環境の違いによって起こる意外な体重への影響</p>
-              </div>
-            </div>
-            <div class="col3 col clearfix">
-              <div class="col_inner clearfix">
-                <div class="plist_info clearfix">
-                  <p class="pimg01"><img src="<?php bloginfo('template_url'); ?>/images/img_dummy01.jpg" alt=""><span><img src="<?php bloginfo('template_url'); ?>/images/icon_new01.png" alt=""></span></p>
-                  <div class="pl_bottom">
-                    <p class="pl_auther"><span><img src="<?php bloginfo('template_url'); ?>/images/img_auther01.png" alt=""></span>meri_moko4</p>
-                    <p class="pl_date">2016.12.24</p>
-                  </div>
-                </div>
-                <p class="pl_title">生活環境の違いによって起こる意外な体重への影響</p>
-              </div>
-            </div>
-            <div class="col3 col clearfix">
-              <div class="col_inner clearfix">
-                <div class="plist_info clearfix">
-                  <p class="pimg01"><img src="<?php bloginfo('template_url'); ?>/images/img_dummy01.jpg" alt=""><span><img src="<?php bloginfo('template_url'); ?>/images/icon_new01.png" alt=""></span></p>
-                  <div class="pl_bottom">
-                    <p class="pl_auther"><span><img src="<?php bloginfo('template_url'); ?>/images/img_auther01.png" alt=""></span>meri_moko4</p>
-                    <p class="pl_date">2016.12.24</p>
-                  </div>
-                </div>
-                <p class="pl_title">生活環境の違いによって起こる意外な体重への影響</p>
-              </div>
-            </div>
-          </div>
+
+          <?php include('parts/first-index-loop.php'); ?>
+          
         </div>
         <!-- Sidebar FrontPage Top -->
        	<?php get_sidebar('frontpage-top'); ?>

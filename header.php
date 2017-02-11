@@ -30,6 +30,7 @@
 
 <script src="<?php bloginfo('template_url'); ?>/js/heightLine.js" type="text/javascript"></script>
 
+<script src="<?php bloginfo('template_url'); ?>/js/slide_editor.js" type="text/javascript"></script>
 <?php //if is article detail
 	if(is_singular()||is_author()) { ?>
 <script src="<?php bloginfo('template_url'); ?>/js/top.js" type="text/javascript"></script>

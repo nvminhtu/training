@@ -10,7 +10,8 @@
     $wp_user_query = new WP_User_Query(array (
         'role' => 'Editor',
         'order' => 'ASC',
-        'orderby' => 'display_name'
+        'orderby' => 'display_name',
+        'exclude' => array($author_id)
     ));
 
     // Get the results
@@ -19,8 +20,7 @@
     // Looping managers
     if (!empty($user_data)) {
         echo '<div id="slide_torejin">';
-        foreach ($user_data as $user)
-        {
+        foreach ($user_data as $user) {
             // get all the user's data
             $user_info = get_userdata($user->ID);
             $author_id = $user->ID;
@@ -41,5 +41,5 @@
         echo 'No users found';
     }
 ?>
-  <p class="btn03 btn"><a href="">トレージン一覧</a></p>
+  <p class="btn03 btn"><a href="<?php bloginfo('siteurl') ?>/user-list/">トレージン一覧</a></p>
 </div>
