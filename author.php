@@ -117,7 +117,15 @@
                 ?>
                     <div class="list_ct_article clearfix">
                       <div class="list_ct_article_img">
-                        <p><a href="<?php the_permalink(); ?>"><img src="<?php echo $img_url; ?>" alt="<?php the_title(); ?>"></a></p>
+                        <p>
+                          <a href="<?php the_permalink(); ?>">
+                          <?php if(has_post_thumbnail()) { ?>
+                            <img src="<?php echo $img_url; ?>" alt="<?php the_title(); ?>">
+                          <?php } else { ?>
+                            <img src="<?php echo $img_url; ?>" alt="<?php the_title(); ?>">
+                          <?php } ?>
+                          </a>
+                        </p>
                       </div>
                       <div class="list_ct_article_ct">
                         <p class="list_ct_article_title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
