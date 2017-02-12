@@ -39,7 +39,7 @@ h2.ttl_h201{
 }
 
 @media screen and (max-width: 1200px) {
-#slide_torejin{
+#slide_torejin,#ct_insta_list{
 		width:80%;
 		margin:0 auto;
 }
@@ -119,7 +119,7 @@ h2.ttl_h201{
 }
 
 @media screen and (max-width: 950px) {
-	#slide_torejin{
+	#slide_torejin,#ct_insta_list{
 		width:80%;
 		margin:0 auto;
 	}
@@ -272,7 +272,7 @@ h5.bh {
 	.other_articles{
 		padding:10px;
 	}
-	#slide_torejin{
+	#slide_torejin,#ct_insta_list{
 		width:100%;
 		margin:0 auto;
 	}

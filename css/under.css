@@ -559,9 +559,25 @@ p.ptitle_01 {
 }
 #tr_slider_pager a{
 	border:1px solid #F4F4F4;
+	display:block;
+	float:left;
+	margin-left:10px;
 	
 }
 	
+	
+#ct_insta_list {
+	width: 100%;
+	max-width: 930px;
+	margin: 0 auto 30px;
+}
+	
+.ct_insta_bx01{
+	width:100%;
+	height:375px;
+	background:#7A7A7A;
+	
+}
 	
 	
 	

@@ -11,7 +11,6 @@ function shortcode_url() {
 	return get_bloginfo('url');
 }
 
-
 /* 05- Twitter	*/
 add_shortcode('twitter', 'shortcode_twitter');
 function shortcode_twitter() {
@@ -36,45 +35,4 @@ function shortcode_instagram_quote_2() {
 	return $content_shortcode;
 }
 
-/* 08- Author Information	*/
-add_shortcode('author_info', 'shortcode_author_info');
-function shortcode_author_info() {
-	$content_shortcode = '';
-	$content_shortcode .= '<div class="person_box clearfix">
-	 <p class="ptitle_01">記事を書いたひと</p>
-	 <div class="img_person clearfix">
-				<p><img src="'.get_bloginfo('template_url').'/images/person_img.jpg" alt="" /></p>
-			</div>
-			<div class="info_person clearfix">
-				<p class="person_name">もりし</p>
-					<p class="person_positon">代表取締役 CEO</p>
-			</div>
-			<p class="person_des">テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
-	</div>';
-	return $content_shortcode;
-}
-
-/* 09- Blog Sidebar Shortcode - show 4 categories has most posts	*/
-add_shortcode('blog-cat-list', 'shortcode_blog_cat_list');
-function shortcode_blog_cat_list() {
-		$content_shortcode = '';
-		$content_shortcode .= '<dl>';
-			$content_shortcode .= '<dt>BLOG</dt>';
-			$content_shortcode .= '<dd>';
-					$terms = get_terms( 'blog-cat', array( 'orderby' => 'count', 'hide_empty' => 0, 'order' => 'DESC'));
-					if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
-						$content_shortcode .= '<ul>';
-						$i = 0;
-						foreach ( $terms as $term ) {
-								if($i < 4) {
-									$content_shortcode .= '<li><a href="'.get_term_link($term).'">' . $term->name . '</a></li>';
-								}
-								$i++;
-						}
-						$content_shortcode .= '</ul>';
-					}
-			$content_shortcode .= '</dd>';
-		$content_shortcode .= '</dl>';
-		return $content_shortcode;
-}
 ?>

@@ -31,11 +31,10 @@ add_image_size( 'img_blog_sidebar', 120, 120, true );
 require_once (dirname(__FILE__) . '/includes/add-image-size.php');
 //require_once (dirname(__FILE__) . '/includes/custom-post-types.php');
 require_once (dirname(__FILE__) . '/includes/widgets.php');
+require_once (dirname(__FILE__) . '/includes/pagination.php');
 
 // ------ require shortcode ----
 require_once (dirname(__FILE__) . '/includes/shortcode.php');
-require_once (dirname(__FILE__) . '/includes/shortcode-member-blogs.php');
-require_once (dirname(__FILE__) . '/includes/shortcode-member-info.php');
 
 // ------ alloww shortcode in widget text
 add_filter( 'widget_text', 'shortcode_unautop');

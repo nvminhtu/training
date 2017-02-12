@@ -5,6 +5,7 @@ $(document).ready(function(){
 	  mode: 'horizontal',
 	  useCSS: false,
 	  speed: 800,
+	   video: true
 	 
 	});
 

@@ -1,83 +1,120 @@
 <?php
-function pretty_pagination() {
-  echo 'test';
-  $range = 4;
+//custom pagination
+function custom_pagination($numpages = '', $pagerange = '', $paged='') {
+
+  if (empty($pagerange)) {
+    $pagerange = 2;
+  }
+
+  /**
+   * This first part of our function is a fallback
+   * for custom pagination inside a regular loop that
+   * uses the global $paged and global $wp_query variables.
+   * 
+   * It's good because we can now override default pagination
+   * in our theme, and use this function in default quries
+   * and custom queries.
+   */
   global $paged;
-
-  if(empty($paged)) $paged = 1;
-
-  $orig_query = $wp_query; // fix for pagination to work
-  $wp_query =  $the_query;
-  echo $pages = $wp_query->max_num_pages;
-
-  if(!$pages){
-      $pages = 1;
+  if (empty($paged)) {
+    $paged = 1;
+  }
+  if ($numpages == '') {
+    global $wp_query;
+    $numpages = $wp_query->max_num_pages;
+    if(!$numpages) {
+        $numpages = 1;
+    }
   }
 
+  /** 
+   * We construct the pagination arguments to enter into our paginate_links
+   * function. 
+   */
+  $pagination_args = array(
+    'base'            => get_pagenum_link(1) . '%_%',
+    'format'          => 'page/%#%',
+    'total'           => $numpages,
+    'current'         => $paged,
+    'show_all'        => False,
+    'end_size'        => 1,
+    'mid_size'        => $pagerange,
+    'prev_next'       => True,
+    'prev_text'       => __('&laquo;'),
+    'next_text'       => __('&raquo;'),
+    'type'            => 'plain',
+    'add_args'        => false,
+    'add_fragment'    => ''
+  );
 
-  if(1 != $pages) {
-      echo '<div class="navi_list clearfix"><ul>';
-      if($paged > 1) {
-        echo '<li class="prev_page"><span>&lsaquo; Previous</span></a></li>';
-      } else {
-        echo '<li class="prev_page disable"><a href="'.get_pagenum_link($paged - 1).'">&lsaquo; Previous</a></li>';
-      }
+  $paginate_links = paginate_links($pagination_args);
 
-      for ($i=1; $i <= $pages; $i++) {
-        if (1 != $pages) {
-              if($paged == $i) {
-                echo '<li class="active"><span class="current">'.$i.'</span></li>';
-              } else {
-                echo '<li><a href="'.get_bloginfo('siteurl').'/blog/page/'.$i.'" class="inactive">'.$i.'</a></li>';
-              }
-          }
-      }
-      $next_page = $paged + 1;
-      if ($paged < $pages) echo '<li class="next_page"><a href="'.get_bloginfo('siteurl').'/blog/page/'.$next_page.'">Next &rsaquo;</a>';
-      echo '</ul></div>';
+  if ($paginate_links) {
+    echo "<nav class='custom-pagination'>";
+      echo "<span class='page-numbers page-num'>Page " . $paged . " of " . $numpages . "</span> ";
+      echo $paginate_links;
+    echo "</nav>";
   }
 
-  $wp_query = $orig_query;
- }
+}
 
-/*
-function custom_pagination() {
-  $range = 4;
-  $showitems = ($range * 2)+1;
+//custom pagination
+function custom_index_pagination($numpages = '', $pagerange = '', $paged='') {
 
+  if (empty($pagerange)) {
+    $pagerange = 2;
+  }
+
+  /**
+   * This first part of our function is a fallback
+   * for custom pagination inside a regular loop that
+   * uses the global $paged and global $wp_query variables.
+   * 
+   * It's good because we can now override default pagination
+   * in our theme, and use this function in default quries
+   * and custom queries.
+   */
   global $paged;
-  if(empty($paged)) $paged = 1;
-  if($pages == '') {
-      $orig_query = $wp_query; // fix for pagination to work
-      $wp_query =  $the_query;
-      $pages = $wp_query->max_num_pages;
-
-      if(!$pages){
-          $pages = 1;
-      }
+  if (empty($paged)) {
+    $paged = 1;
+  }
+  if ($numpages == '') {
+    global $wp_query;
+    $numpages = $wp_query->max_num_pages;
+    if(!$numpages) {
+        $numpages = 1;
+    }
   }
 
-  if(1 != $pages) {
-      $content_shortcode .= '<div class=\"pagination\">';
-      //$content_shortcode .= '<span>Page '.$paged.' of '.$pages.'</span>';
-      // if($paged > 2 && $paged > $range+1 && $showitems < $pages) $content_shortcode .= '<a href="'.get_pagenum_link(1).'">&laquo; First</a>';
-      if($paged > 1 && $showitems < $pages) $content_shortcode .= '<a href="'.get_pagenum_link($paged - 1).'">&lsaquo; Previous</a>';
+  /** 
+   * We construct the pagination arguments to enter into our paginate_links
+   * function. 
+   */
+  $pagination_args = array(
+    'base'            => get_pagenum_link(1) . '%_%',
+    'format'          => 'blogs/page/%#%',
+    'total'           => $numpages,
+    'current'         => $paged,
+    'show_all'        => False,
+    'end_size'        => 1,
+    'mid_size'        => $pagerange,
+    'prev_next'       => True,
+    'prev_text'       => __('&laquo;'),
+    'next_text'       => __('&raquo;'),
+    'type'            => 'plain',
+    'add_args'        => false,
+    'add_fragment'    => ''
+  );
 
-      for ($i=1; $i <= $pages; $i++) {
-        if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems )) {
-              if($paged == $i) {
-                $content_shortcode .= '<span class="current">'.$i.'</span>';
-              } else {
-                // $content_shortcode .= '<a href="'.get_bloginfo('siteurl').'/blog/page/'.$i.'">'.$i.'</a>';
-                $content_shortcode .= '<a href="'.get_bloginfo('siteurl').'/blog/page/'.$i.'" class="inactive">'.$i.'</a>';
-              }
-          }
-      }
-      $next_page = $paged + 1;
-      if ($paged < $pages && $showitems < $pages)  $content_shortcode .= '<a href="'.get_bloginfo('siteurl').'/blog/page/'.$next_page.'">Next &rsaquo;</a>';
-      //if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages)  $content_shortcode .= '<a href="'.get_pagenum_link($pages).'">Last &raquo;</a>';
-       $content_shortcode .= '</div>';
+  $paginate_links = paginate_links($pagination_args);
+
+  if ($paginate_links) {
+    echo "<nav class='custom-pagination'>";
+      echo "<span class='page-numbers page-num'>Page " . $paged . " of " . $numpages . "</span> ";
+      echo $paginate_links;
+    echo "</nav>";
   }
-  $wp_query = $orig_query;
-} */
+
+}
+
  ?>

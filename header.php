@@ -24,16 +24,17 @@
 <script src="<?php bloginfo('template_url'); ?>/js/jquery.js" type="text/javascript"></script>
 <script src="<?php bloginfo('template_url'); ?>/js/jquery.scroll.js" type="text/javascript"></script>
 <script src="<?php bloginfo('template_url'); ?>/js/common.js" type="text/javascript"></script>
+<script src="<?php bloginfo('template_url'); ?>/js/jquery.fitvids.js"></script>
 <script src="<?php bloginfo('template_url'); ?>/js/jquery.bxslider.js"></script>
 <link href="<?php bloginfo('template_url'); ?>/css/jquery.bxslider.css" rel="stylesheet" />
 <script src="<?php bloginfo('template_url'); ?>/js/jquery.easing.min.js" type="text/javascript"></script>
 
 <script src="<?php bloginfo('template_url'); ?>/js/heightLine.js" type="text/javascript"></script>
+<script src="<?php bloginfo('template_url'); ?>/js/top.js" type="text/javascript"></script>
 
-<script src="<?php bloginfo('template_url'); ?>/js/slide_editor.js" type="text/javascript"></script>
 <?php //if is article detail
 	if(is_singular()||is_author()) { ?>
-<script src="<?php bloginfo('template_url'); ?>/js/top.js" type="text/javascript"></script>
+<script src="<?php bloginfo('template_url'); ?>/js/slide_editor.js" type="text/javascript"></script>
 <link href="<?php bloginfo('template_url'); ?>/css/owl.carousel.css" rel="stylesheet" type="text/css" />
 <script src="<?php bloginfo('template_url'); ?>/js/owl.carousel.js" type="text/javascript"></script>
 <?php } ?>

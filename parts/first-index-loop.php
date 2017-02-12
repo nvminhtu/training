@@ -38,14 +38,15 @@
     ?>
     <div class="col3 col clearfix">
       <div class="col_inner clearfix">
-        <a href="<?php the_permalink(); ?>">
+        
           <div class="plist_info clearfix">
             <p class="pimg01">
-              <?php if ( has_post_thumbnail() ) { ?>
+              <a href="<?php the_permalink(); ?>"><?php if ( has_post_thumbnail() ) { ?>
                 <img src="<?php echo $img_blog_src; ?>" width="323" height="200" alt="<?php the_title(); ?>">
               <?php } else { ?>
                 <img src="<?php bloginfo('template_url'); ?>/images/img_dummy01.jpg" alt="<?php the_title(); ?>">
               <?php } ?>
+              </a>
               <span><img src="<?php bloginfo('template_url'); ?>/images/icon_new01.png" alt="<?php the_title(); ?>"></span>
             </p>
             <div class="pl_bottom">
@@ -53,8 +54,7 @@
               <p class="pl_date"><?php echo $time; ?></p>
             </div>
           </div>
-        </a>
-        <p class="pl_title"><?php the_title(); ?></p>
+        <p class="pl_title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
       </div>
     </div>
     <?php $i++;

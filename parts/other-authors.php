@@ -38,7 +38,7 @@
         }
         echo '</div>';
     } else {
-        echo 'No users found';
+        echo 'No other users found';
     }
 ?>
   <p class="btn03 btn"><a href="<?php bloginfo('siteurl') ?>/user-list/">トレージン一覧</a></p>

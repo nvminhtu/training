@@ -45,7 +45,7 @@ get_header(); ?>
 		                            } else {
 		                              echo $content_display;
 		                            }
-		                         ?> 	
+		                        ?>
 	                        </p>
 			                <div class="list_ct_article_info clearfix">
 			                  <ul>
