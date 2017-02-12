@@ -12,7 +12,7 @@
         </div>
         <div class="fcol flink fcol03 clearfix">
           <?php dynamic_sidebar( 'Footer Menu 3' ); ?>
-          <dl>
+          <!-- <dl>
             <dt>関連メディア</dt>
             <dd>
               <ul class="flist_social">
@@ -21,7 +21,7 @@
                 <li class="ficon_ins"><a href="#">Instagram</a></li>
               </ul>
             </dd>
-          </dl>
+          </dl> -->
         </div>
         <div class="fcol fcol04 clearfix">
           <dl>
@@ -56,12 +56,7 @@
     </div>
     <div id="footer_info" class="clearfix">
       <div class="inner clearfix">
-        <ul class="flink01 clearfix">
-          <li><a href="#">トレージンとは</a></li>
-          <li><a href="#">ご利用規約</a></li>
-          <li><a href="#">運営会社</a></li>
-          <li><a href="#">広告掲載について</a></li>
-        </ul>
+        <?php dynamic_sidebar( 'Footer Menu Bottom' ); ?>
         <address>
         キレイ・カッコいいスタイルを目指すトレーニングメディア - トレージン  © Groovoost Inc.
         </address>

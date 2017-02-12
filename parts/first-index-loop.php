@@ -23,8 +23,7 @@
     foreach($blog_posts as $post) : setup_postdata($post);
       
       $thumb = get_post_thumbnail_id();
-      $img_url = wp_get_attachment_url($thumb,'full');
-      $img_blog = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID),'img_blog');
+      $img_blog = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID),'img_blog_index');
       $img_blog_src = $img_blog[0];
       $img_archive_blog_src = $img_archive_blog[0];
 
@@ -32,7 +31,7 @@
       $nd = get_the_content();
       $id = get_the_ID();
       
-      $author_id=$post->post_author;
+      $author_id = $post->post_author;
       $nicename = get_the_author_meta( 'user_nicename' );
       $editor_gallery = get_field('profile_picture', 'user_'. $author_id);
       $editor_avatar_url = $editor_gallery[0]['sizes']['img_author_tiny'];
@@ -41,7 +40,14 @@
       <div class="col_inner clearfix">
         <a href="<?php the_permalink(); ?>">
           <div class="plist_info clearfix">
-            <p class="pimg01"><img src="<?php bloginfo('template_url'); ?>/images/img_dummy01.jpg" alt=""><span><img src="<?php bloginfo('template_url'); ?>/images/icon_new01.png" alt=""></span></p>
+            <p class="pimg01">
+              <?php if ( has_post_thumbnail() ) { ?>
+                <img src="<?php echo $img_blog_src; ?>" width="323" height="200" alt="<?php the_title(); ?>">
+              <?php } else { ?>
+                <img src="<?php bloginfo('template_url'); ?>/images/img_dummy01.jpg" alt="<?php the_title(); ?>">
+              <?php } ?>
+              <span><img src="<?php bloginfo('template_url'); ?>/images/icon_new01.png" alt="<?php the_title(); ?>"></span>
+            </p>
             <div class="pl_bottom">
               <p class="pl_auther"><span><img src="<?php echo $editor_avatar_url; ?>" width="28" height="28" alt="<?php echo $nicename; ?>"></span><?php echo $nicename; ?></p>
               <p class="pl_date"><?php echo $time; ?></p>

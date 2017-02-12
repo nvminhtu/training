@@ -48,6 +48,34 @@ function footer_widget_three()
  }
 add_action('widgets_init', 'footer_widget_three');
 
+// 03. Add widget 04
+function footer_widget_fourth() {
+	 register_sidebar(array(
+	  'name' => 'Footer Menu 4',
+	  'class' => 'fcol fcol04 clearfix',
+	  'description' => 'This is Footer Widget fourth',
+	  'before_title' => '<dt>',
+	  'after_title' => '</dt><dd>',
+	  'before_widget' => '<dl>',
+	  'after_widget' => '</dd></dl>',
+	 ));
+ }
+add_action('widgets_init', 'footer_widget_three');
+
+// 03. Add widget Bottom
+function footer_widget_bottom() {
+	 register_sidebar(array(
+	  'name' => 'Footer Menu Bottom',
+	  'class' => 'flink01 clearfix',
+	  'description' => 'This is Footer Widget at Bottom',
+	  'before_title' => '',
+	  'after_title' => '',
+	  'before_widget' => '<div class="flink01 clearfix">',
+	  'after_widget' => '</div>',
+	 ));
+ }
+ add_action('widgets_init', 'footer_widget_bottom');
+
 // 03. Add widget Sidebar
 function sidebar_widget()
 {

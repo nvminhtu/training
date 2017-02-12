@@ -144,7 +144,7 @@
                     </div>
                 <?php  endwhile; // End the loop.
 
-                wp_pagenavi(); //pagination
+                 wp_pagenavi(); //pagination
               else :
                   //no post here
               endif;
