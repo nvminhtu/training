@@ -1082,14 +1082,46 @@ border-radius: 28px;}
 	background:#2E9E97;
 	color:#fff;
 	}
+
+
+/*==========================================================================*/
+/*                       .custom-pagination                   */
+/*==========================================================================*/
+
+
+.custom-pagination a, .custom-pagination span,
+.wp-pagenavi a,.wp-pagenavi span {
+	background-color: #FFFFFF;
+	font-size: 1.4em;
+	line-height: 40px;
+	margin-right: 5px;
+	min-height:40px;
+	min-width:40px;
+	color: #111111;
+	border: 1px solid #EEEEEE;
+	box-sizing:border-box;
+	text-decoration:none;
+	padding:0 5px;
+	  display: inline-block;
 	
-	
-	
-	
-	
-	
-	
-	
-	
+}
+.custom-pagination a:hover, .custom-pagination span.current ,
+.wp-pagenavi a:hover, .wp-pagenavi span.current {
+	background:#DDDDDD;
+	border: 1px solid #DDDDDD;
+	color: #111111;
+}
+.custom-pagination .page,
+.wp-pagenavi .page {
+}
+.custom-pagination,
+.wp-pagenavi {
+	margin: 2em;
+	text-align: center;
+}
+.custom-pagination a.last,
+.wp-pagenavi a.last {
+	float: none;
+}	
 	
 	
