@@ -1,0 +1,18 @@
+ul {
+    margin-bottom: 25px;
+    list-style: none;
+}
+ul li {
+    position: relative;
+    padding-left: 23px;
+}
+ul li:before {
+    width: 10px;
+    height: 8px;
+    content: "";
+    z-index: 4;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    background: #EB6877;
+}

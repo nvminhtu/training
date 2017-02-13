@@ -35,6 +35,7 @@ require_once (dirname(__FILE__) . '/includes/pagination.php');
 
 // ------ require shortcode ----
 require_once (dirname(__FILE__) . '/includes/shortcode.php');
+require_once (dirname(__FILE__) . '/includes/format-editor.php');
 
 // ------ alloww shortcode in widget text
 add_filter( 'widget_text', 'shortcode_unautop');
