@@ -43,16 +43,46 @@
 		         </div>
 	          
 	          <?php the_content(); ?>
+	          
+			<?php 
+			
+				$post_objects = get_field('select_other_blogs',$post->ID);
 
-	          <div class="other_articles">
-	            <div class="list_latestpost_sb_img">
-	              <p><a href="#"><img src="<?php bloginfo('template_url'); ?>/images/img_dumm04.jpg"></a></p>
-	            </div>
-	            <div class="list_latestpost_sb_ct">
-	              <p class="list_latestpost_sb_title"> <a href="#">記事タイトルが入ります。記事タイトルが入ります。記事タイトルが入ります。記事タイトルが入ります。記事タイトルが入ります。記事タイトルが入ります。記事タイトルが入ります。記事タイトルが入ります。</a></p>
-	              <p class="list_latestpost_sb_date"> 2016.00.00 </p>
-	            </div>
-	          </div>
+				if( $post_objects ): ?>
+				   
+				    <?php foreach( $post_objects as $post):
+				    	setup_postdata($post); 
+				     		$time = get_the_date('Y.m.d', $post->ID);
+							$img_other_blogs = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID),'img_other_blogs');
+							$img_other_blogs_src = $img_other_blogs[0];
+							setup_postdata($post); ?>
+							<div class="other_articles">
+								<div class="list_latestpost_sb_img">
+									<p>
+										<a href="<?php echo get_permalink($post->ID); ?>">
+											<?php //get featured image
+											if ( has_post_thumbnail($post->ID) ) { ?>
+												<img src="<?php echo $img_other_blogs_src; ?>" alt="<?php echo get_the_title($post->ID); ?>"  />
+											<?php } else { ?>
+												<img src="<?php echo get_bloginfo('template_url'); ?>/images/dummy92x70.jpg">
+											<?php } ?>
+										</a>
+									</p>
+								</div>
+								<div class="list_latestpost_sb_ct">
+									<p class="list_latestpost_sb_title">
+									<a href="<?php echo get_permalink($post->ID); ?>">
+										<?php echo get_the_title($post->ID); ?></a>
+									</p>
+									<p class="list_latestpost_sb_date"><?php echo $time; ?></p>
+								</div>
+							</div>
+				    <?php endforeach; ?>
+				    
+				    <?php wp_reset_postdata(); ?>
+				<?php endif; ?>
+
+	          	
 	
         <?php endwhile;
 		  		else :

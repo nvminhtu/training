@@ -3,7 +3,7 @@
    ** Load other Authors
   ***/
 ?>
-<div class="related_auther clearfix">
+<div class="related_auther clearfix mt30">
   <p class="ptitle_02">トレージン</p>
   <?php 
     // Create the WP_User_Query object

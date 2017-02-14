@@ -1,3 +1,4 @@
+/* ------------ visual list (ul,li) -----------------*/
 ul {
     margin-bottom: 25px;
     list-style: none;
@@ -15,4 +16,106 @@ ul li:before {
     top: 10px;
     left: 0;
     background: #EB6877;
+}
+ol {
+    list-style-type: none;
+    margin: 0;
+    margin-left: 2em;
+    padding: 0;
+    counter-reset: li-counter;
+}
+ol > li {
+    position: relative;
+    margin-bottom: 10px;
+    padding-left: 1.4em;
+    line-height: 1.8em;
+}
+ol > li:before {
+    position: absolute;
+    top: 2px;
+    left: -1.33em;
+    width: 1.3em;
+    height: 1.3em;
+    font-size: 16px;
+    line-height: 1.3em;
+    text-align: center;
+    color: #fff;
+    border: 2px solid #009E96;
+    border-radius: 50%;
+    background-color: #009E96;
+    content: counter(li-counter);
+    counter-increment: li-counter;
+}
+/* ------------ visual heading -----------------*/
+h2.bh {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.5em;
+    margin-bottom: 25px;
+    padding: 21px 0 20px;
+    border-top: 1px solid #434343;
+    border-bottom: 1px solid #434343;
+}
+h3.bh {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 35px;
+    margin-bottom: 25px;
+    padding: 17px 20px 16px 19px;
+    background: #F4F4F4;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #333333;
+}
+h4.bh {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.5em;
+    margin-bottom: 25px;
+    padding: 6px 20px 6px 19px;
+    border-left: 2px solid #333333;
+    color: #333333;
+}
+h5.bh {
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5em;
+    border-bottom: 3px solid #C9C9C9;
+    padding-bottom: 5px;
+}
+h6.bh {
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5em;
+}
+/* ------------ paragraph and image - align center -----------------*/
+.center {
+    text-align: center;
+}
+.img_ins01 {
+    margin-bottom: 10px;
+    text-align: center;
+}
+/* ------------ table -----------------*/
+table, th, td {
+    border: 2px solid #fff;
+    font-size: 16px;
+    text-align: center;
+}
+table {
+    margin: 0 auto 30px;
+    font-size: 14px;
+}
+table th {
+    width: 25%;
+    background: #009E96;
+    color: #fff;
+    font-weight: bold;
+}
+table td {
+    background: #f6f6f6;
+    text-align:left;
 }

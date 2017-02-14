@@ -3,6 +3,7 @@
   <div id="main" class="clearfix">
     <div class="inner clearfix">
       <div id="content" class="clearfix">
+        
         <div class="traijing_box_top clearfix">
           <?php 
               $author = get_queried_object();
@@ -18,7 +19,7 @@
               $editor_avatar_tiny = $editor_gallery[0]['sizes']['img_author_tiny'];
           ?>
          
-          <!-- ###editor pictures / video -->
+          <?php /* ---------------### 1.1.editor pictures / video-------------------------------- */ ?>
           <div class="tr_top_main clearfix">
             
             <?php 
@@ -81,9 +82,9 @@
               <!-- #tr_slider_out --></div>
             <?php } ?>
           </div>
-          <!-- ###end editor pictures / video -->
+          <?php /* ---------------### end 1.1.editor pictures / video-------------------------------- */ ?>
 
-          <!-- editor information -->
+          <?php /* ---------------### 1.2 editor information-------------------------------- */ ?>
           <div class="tr_top_info clearfix">
             <p class="list_ct_traijing_auther">
               <?php echo $fullname; ?>
@@ -103,10 +104,31 @@
             <p class="btn_fl"><a href="">+ フォロー</a></p> -->
 
           </div>
-          <!-- end editor information -->
-
+          <?php /* ---------------### end 1.2 editor information -------------------------------- */ ?>
          <!-- end traijing_box_top --></div>
+          
 
+        <?php /* ---------------### 02.Instagram of user -------------------------------- */ ?>
+        <div class="ct_article_box clearfix">
+          <p class="ptitle_02">Instagramの写真</p>
+          <div class="ct_insta_list_out clearfix">
+               
+            <div id="ct_insta_list" class="">
+              <div class="ct_insta_bx01">
+              </div>
+              <div class="ct_insta_bx01">
+              </div>
+              <div class="ct_insta_bx01">
+              </div>
+              <div class="ct_insta_bx01">
+              </div>
+            </div>
+          </div>
+        </div>
+        <?php /* ---------------### End 02.Instagram of user -------------------------------- */ ?>
+        
+
+        <?php /* ---------------### 03. Load posts of user -------------------------------- */ ?>
         <div class="ct_article_box clearfix">
           <div class="ct_article_list_out clearfix"> 
             <?php if ( have_posts() ) :
@@ -120,9 +142,9 @@
                         <p>
                           <a href="<?php the_permalink(); ?>">
                           <?php if(has_post_thumbnail()) { ?>
-                            <img src="<?php echo $img_url; ?>" alt="<?php the_title(); ?>">
+                            <img src="<?php echo $img_url; ?>" width="220" height="164" alt="<?php the_title(); ?>">
                           <?php } else { ?>
-                            <img src="<?php echo $img_url; ?>" alt="<?php the_title(); ?>">
+                            <img src="<?php bloginfo('template_url'); ?>/images/dummy220x164.jpg" width="220" height="164" alt="<?php the_title(); ?>">
                           <?php } ?>
                           </a>
                         </p>
@@ -162,7 +184,8 @@
           <?php include('parts/other-authors.php'); ?>
 
         <!-- ct_article_box --></div>
-        
+        <?php /* ---------------### 03. Load posts of user -------------------------------- */ ?>
+
       </div>
       <!-- start : #navi -->
       <?php get_sidebar(); ?>
