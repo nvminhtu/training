@@ -62,7 +62,7 @@ function footer_widget_fourth() {
  }
 add_action('widgets_init', 'footer_widget_three');
 
-// 03. Add widget Bottom
+// ----------------- 03. Add widget Bottom -----------------------
 function footer_widget_bottom() {
 	 register_sidebar(array(
 	  'name' => 'Footer Menu Bottom',
@@ -76,9 +76,8 @@ function footer_widget_bottom() {
  }
  add_action('widgets_init', 'footer_widget_bottom');
 
-// 03. Add widget Sidebar
-function sidebar_widget()
-{
+// ----------------- 04. Add widget Sidebar -----------------------
+function sidebar_widget() {
 	register_sidebar(array(
 	  'name' => 'Sidebar Widget',
 	  'class' => '',
@@ -91,6 +90,7 @@ function sidebar_widget()
  }
 add_action('widgets_init', 'sidebar_widget');
 
+// ----------------- 06. Custom code for removing wrap symbol -----------------------
 // >> add [widget title] to prevent it display on
 function flexible_widget_titles( $widget_title ) {
   // get rid of any leading and trailing spaces

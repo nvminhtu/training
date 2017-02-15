@@ -19,14 +19,22 @@
       <div class="inner clearfix">
         <div class="content content01 clearfix">
           <!-- 02.banner management -->
-          <div class="topic_path clearfix">
-            <ul>
-              <li><a href="#">【本日限定】配達日を土日指定でポイントアップ</a></li>
-            </ul>
-          </div>
-          <div class="ct_bnr01">
-            <p><img src="<?php bloginfo('template_url'); ?>/images/bnr_tpoint.jpg" alt=""></p>
-          </div>
+          <?php 
+            $banner_top_title = get_field( 'banner_top_title','option');
+            $banner_picture_upload = get_field( 'banner_picture_upload','option');
+            if( $banner_top_title ) { ?>
+              <div class="topic_path clearfix">
+                <ul>
+                  <li><a href="#"><?php echo $banner_top_title; ?></a></li>
+                </ul>
+              </div>    
+            <?php }
+            if( $banner_picture_upload ) { ?>
+              <div class="ct_bnr01">
+                <p><img src="<?php echo $banner_picture_upload; ?>" alt=""></p>
+              </div> 
+            <?php }
+          ?>
           <!-- end 02.banner management -->
 
           <?php include('parts/first-index-loop.php'); ?>

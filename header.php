@@ -14,12 +14,16 @@
 <link href="<?php bloginfo('template_url'); ?>/style.css" rel="stylesheet" type="text/css" />
 <link href="<?php bloginfo('template_url'); ?>/css/styles.css" rel="stylesheet" type="text/css" />
 <link href="<?php bloginfo('template_url'); ?>/css/menu.css" rel="stylesheet" type="text/css" />
-<link href="<?php bloginfo('template_url'); ?>/css/responsive.css" rel="stylesheet" type="text/css" />
 
 <?php if(!(is_front_page()||is_home())) { ?>
 <link href="<?php bloginfo('template_url'); ?>/css/under.css" rel="stylesheet" type="text/css" />
+<?php } ?>
+<link href="<?php bloginfo('template_url'); ?>/css/responsive.css" rel="stylesheet" type="text/css" />
+
+<?php if(!(is_front_page()||is_home())) { ?>
 <link href="<?php bloginfo('template_url'); ?>/css/under_responsive.css" rel="stylesheet" type="text/css" />
 <?php } ?>
+
 
 <script src="<?php bloginfo('template_url'); ?>/js/jquery.js" type="text/javascript"></script>
 <script src="<?php bloginfo('template_url'); ?>/js/jquery.scroll.js" type="text/javascript"></script>
