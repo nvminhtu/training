@@ -35,4 +35,138 @@ function shortcode_instagram_quote_2() {
 	return $content_shortcode;
 }
 
+/* 08- Get latest post with sticky */
+add_shortcode('pickup_posts', 'pickup_posts_func');
+function pickup_posts_func($atts) {
+	extract(shortcode_atts(array(
+     'title' => 'ジム入門！初心者特集',
+     'sub_title' => 'これから開始される方へのアドバイス！',
+     'number_post' => 1,
+     'text_link' => 'ジム入門！初心者特集'
+  	), $atts));
+
+	$sticky = get_option( 'sticky_posts' );
+	rsort( $sticky );
+
+	/* Get the 5 newest stickies (change 5 for a different number) */
+	$sticky = array_slice( $sticky, 0, $number_post );
+
+	/* Query sticky posts */
+	$the_query = new WP_Query( array( 
+			'post__in' => $sticky,
+			'ignore_sticky_posts' => 1
+		) );
+	// The Loop
+	if ( $the_query->have_posts() ) {
+		$time = get_the_date('Y.m.d', $post->ID);
+        $id = get_the_ID();
+        $author_id = $post->post_author;
+        $nicename = get_the_author_meta( 'user_nicename' );
+        $editor_gallery = get_field('profile_picture', 'user_'. $author_id);
+        $editor_avatar_url = $editor_gallery[0]['sizes']['img_author_tiny'];
+
+		$return .='<div class="list_navi list_navi01 clearfix">
+		  	<dl>
+		    <dt>'.$title.'<span>'.$sub_title.'</span></dt>';
+				$return .= '<dd>';
+				while ( $the_query->have_posts() ) {
+					$the_query->the_post();
+					$return .='<dd><div class="list_latestpost_sb_img">
+					        <p><a href="'.get_permalink().'">';
+					
+					if(has_post_thumbnail()) { 
+					    	$return .='<img src="'. $img_blog_src .'" alt="">'; 
+					    } else {
+					    	$return .='<img src="'.get_bloginfo('template_url').'/images/dummy60x60.jpg" alt="">'; 
+					    }
+					
+					$return .='</a></p>
+					      </div>
+					      <div class="list_latestpost_sb_ct">
+					        <p class="list_latestpost_sb_title"><a href="'.get_permalink().'">'.get_the_title().'</a></p>
+					        <p class="list_latestpost_sb_info clearfix"><span class="nauther01">'.$nicename.'</span><span class="nview">66,539</span></p>
+					      </div></dd>';
+		}
+		$return .='</dl>
+  		<p class="link01"><a href="'.get_bloginfo('siteurl').'/blogs/">'.$text_link.'</a></p>
+</div>';
+	} else {
+		// no posts found
+	}
+	/* Restore original Post Data */
+	wp_reset_postdata();
+	return $return; 
+} 
+
+/* 08- Get latest post with sticky */
+add_shortcode('ranking_article', 'ranking_article_func');
+function ranking_article_func($atts) {
+	extract(shortcode_atts(array(
+     'title' => 'アクセスランキング',
+     'sub_title' => '最近投稿された記事の順位',
+     'number_post' => 3,
+     'text_link' => 'ランキングを見る'
+  	), $atts));
+
+	
+	$return .='<div class="list_navi list_navi01 clearfix">
+	  <dl>
+	    <dt>'.$title.'<span>'.$sub_title.'</span></dt>';
+	 
+	        global $post;
+	        global $wp_query;
+
+	        $args = array(
+	          'numberposts' => $number_post,
+	          'orderby' => date,
+	          'order' => desc,
+	          'field' => 'slug'
+	        );
+	        $blog_posts = get_posts($args);
+	        if($blog_posts) {
+	          $i=1;
+	          foreach($blog_posts as $post) : 
+	            setup_postdata($post);
+	            $time = get_the_date('Y.m.d', $post->ID);
+	            $nd = get_the_content();
+	            $id= get_the_ID();
+	            
+	            $author_id = $post->post_author;
+	            $nicename = get_the_author_meta( 'user_nicename' );
+	            $editor_gallery = get_field('profile_picture', 'user_'. $author_id);
+	            $editor_avatar_url = $editor_gallery[0]['sizes']['img_author_tiny'];
+	            
+	            $img_blog = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID),'img_blog_sidebar');
+	            $img_blog_src = $img_blog[0];
+	         
+	    $return .='<dd>
+	      <div class="list_latestpost_sb_img">
+	        <p><a href="'.get_permalink().'">';
+
+	          if(has_post_thumbnail()) { 
+					    	$return .='<img src="'. $img_blog_src .'" alt="">'; 
+			    } else {
+			    	$return .='<img src="'.get_bloginfo('template_url').'/images/dummy60x60.jpg" alt="">'; 
+			    }
+	            $return .='<span class="certi certi01">1</span>
+	          </a>
+	        </p>
+	      </div>
+	      <div class="list_latestpost_sb_ct">
+	        <p class="list_latestpost_sb_title"><a href="'.get_permalink().'">'.get_the_title().'</a></p>
+	        <p class="list_latestpost_sb_info clearfix"><span class="nauther01">'.$nicename.'</span><span class="nview">66,539</span></p>
+	      </div>
+	    </dd>';
+	    	$i++;
+	    endforeach;
+	    wp_reset_query();
+	    wp_reset_postdata(); 
+	    } 
+	  $return .='</dl>
+	  <p class="link01"><a href="'.get_bloginfo('siteurl').'/blogs">'.$text_link.'</a></p>
+	</div>';
+
+	return $return;
+} 
+
 ?>

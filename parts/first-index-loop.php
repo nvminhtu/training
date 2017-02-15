@@ -44,7 +44,7 @@
               <a href="<?php the_permalink(); ?>"><?php if ( has_post_thumbnail() ) { ?>
                 <img src="<?php echo $img_blog_src; ?>" width="323" height="200" alt="<?php the_title(); ?>">
               <?php } else { ?>
-                <img src="<?php bloginfo('template_url'); ?>/images/img_dummy01.jpg" alt="<?php the_title(); ?>">
+                <img src="<?php bloginfo('template_url'); ?>/images/dummy323x200.jpg" alt="<?php the_title(); ?>">
               <?php } ?>
               </a>
               <span><img src="<?php bloginfo('template_url'); ?>/images/icon_new01.png" alt="<?php the_title(); ?>"></span>

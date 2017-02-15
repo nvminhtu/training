@@ -68,7 +68,7 @@
                           <?php if(has_post_thumbnail()) { ?> 
                              <img src="<?php echo $img_blog_src; ?>" alt="<?php the_title(); ?>">
                           <?php } else { ?>
-                              <img src="<?php bloginfo('template_url'); ?>/images/img_dummy03.jpg" alt="">
+                              <img src="<?php bloginfo('template_url'); ?>/images/dummy100x100.jpg" alt="">
                           <?php } ?>
                           <span class="pickup_box_view">43,215</span>
                         </a>

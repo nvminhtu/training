@@ -4,19 +4,29 @@
 </div>
 */ ?>
 <div id="navi" class="navi clearfix">
-  <div class="navi_ad01 clearfix">
-    <div class="navi_ad01_in">
-      <p><img src="<?php bloginfo('template_url'); ?>/images/navi_ad01.jpg" alt=""></p>
+  <div class="cwidget-sidebar">
+    <div class="navi_ad01 clearfix">
+      <div class="navi_ad01_in">
+        <p><img src="<?php bloginfo('template_url'); ?>/images/navi_ad01.jpg" alt=""></p>
+      </div>
     </div>
   </div>
-   <?php include('parts/article-pickup-sidebar.php'); ?>
-  <div class="navi_ad02 clearfix">
-    <div class="navi_ad01_in">
-      <p><img src="<?php bloginfo('template_url'); ?>/images/navi_ad02.jpg" alt=""></p>
-    </div>
+  
+  <?php dynamic_sidebar( 'Sidebar Widget' ); ?>
+  
+  <div class="cwidget-sidebar">
+     <div class="navi_ad02 clearfix">
+        <div class="navi_ad01_in">
+          <p><img src="<?php bloginfo('template_url'); ?>/images/navi_ad02.jpg" alt=""></p>
+        </div>
+      </div>
   </div>
-  <div class="navi02 clearfix">
-    <?php include('parts/article-list-sidebar.php'); ?>
+ 
+  <div class="cwidget-sidebar">
+    <?php echo do_shortcode('[ranking_article number_post="4" text_link="ランキングを見る" sub_title="最近投稿された記事の順位" title="アクセスランキング"]'); ?>
+  </div>
+
+  <div class="cwidget-sidebar">
     <div class="list_navi clearfix">
       <dl>
         <dt>話題のキーワード<span>注目されている言葉</span></dt>

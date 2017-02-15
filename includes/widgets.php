@@ -79,14 +79,14 @@ function footer_widget_bottom() {
 // 03. Add widget Sidebar
 function sidebar_widget()
 {
-	 register_sidebar(array(
+	register_sidebar(array(
 	  'name' => 'Sidebar Widget',
 	  'class' => '',
-	  'description' => '',
+	  'description' => 'This is sidebar Widget',
 	  'before_title' => '',
 	  'after_title' => '',
-	  'before_widget' => '',
-	  'after_widget' => '',
+	  'before_widget' => '<div class="cwidget-sidebar">',
+	  'after_widget' => '</div>',
 	 ));
  }
 add_action('widgets_init', 'sidebar_widget');

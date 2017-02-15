@@ -29,7 +29,7 @@ get_header(); ?>
 			                		<?php if(has_post_thumbnail()) { ?>
 			                			<img src="<?php echo $img_url; ?>" alt="<?php the_title(); ?>">
 			                		<?php } else { ?> 
-			                			<img src="<?php bloginfo('template_url'); ?>/images/traijing_article_list_img01.jpg" alt="<?php the_title(); ?>">
+			                			<img src="<?php bloginfo('template_url'); ?>/images/dummy220x164.jpg" alt="<?php the_title(); ?>">
 			                		<?php } ?>
 			                	</a>
 			                </p>
