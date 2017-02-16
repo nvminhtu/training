@@ -8,7 +8,7 @@
           <?php 
               $author = get_queried_object();
               $author_id = $author->ID;
-              $firstname = get_the_author_meta( 'user_firstname',$author_id );
+              $firstname = get_the_author_meta( 'user_firstname', $author_id );
               $lastname = get_the_author_meta( 'user_lastname', $author_id );
               $fullname = $firstname.' '.$lastname;
               $nicename = get_the_author_meta( 'user_nicename', $author_id );
@@ -17,6 +17,12 @@
               $promotion_video = get_field('promotion_video', 'user_'. $author_id);
               $editor_gallery = get_field('profile_picture', 'user_'. $author_id);
               $editor_avatar_tiny = $editor_gallery[0]['sizes']['img_author_tiny'];
+              $insta_username = get_the_author_meta('insta_username', $author_id);
+              $insta_access_token = get_the_author_meta('insta_access_token', $author_id);
+
+              //access_token - which was taken from user Tu
+              $insta_access_token = '3924456062.54da896.0040c00f27ef4411998a26645a452f34';
+
           ?>
          
           <?php /* ---------------### 1.1.editor pictures / video-------------------------------- */ ?>
@@ -111,19 +117,7 @@
         <?php /* ---------------### 02.Instagram of user -------------------------------- */ ?>
         <div class="ct_article_box clearfix">
           <p class="ptitle_02">Instagramの写真</p>
-          <div class="ct_insta_list_out clearfix">
-               
-            <div id="ct_insta_list" class="">
-              <div class="ct_insta_bx01">
-              </div>
-              <div class="ct_insta_bx01">
-              </div>
-              <div class="ct_insta_bx01">
-              </div>
-              <div class="ct_insta_bx01">
-              </div>
-            </div>
-          </div>
+          <?php echo do_shortcode('[ap_instagram_slider set_username="'.$insta_username.'" set_access_token="'.$insta_access_token.'"]'); ?>
         </div>
         <?php /* ---------------### End 02.Instagram of user -------------------------------- */ ?>
         

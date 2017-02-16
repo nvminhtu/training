@@ -86,10 +86,13 @@
 	      </div>
 	      <!-- Gnavi end -->
 	      <?php } ?>
-	      <div class="head_search">
-	        <div class="icon-search-container" data-ic-class="search-trigger"> <span class="fa fa-search"></span>
-	          <input type="text" class="search-input" data-ic-class="search-input" placeholder="Search"/>
-	          <span class="fa fa-times-circle" data-ic-class="search-clear"></span> </div>
+	       <div class="head_search">
+				 <div class="icon-search-container" data-ic-class="search-trigger"><span class="fa fa-search"></span>
+		        	<form role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
+						<input type="text" value="<?php echo get_search_query(); ?>" name="s" id="s" class="search-input" data-ic-class="search-input" placeholder="Search"/>
+						<span class="fa fa-times-circle" data-ic-class="search-clear"></span>
+					</form>
+		        </div>
 	      </div>
 	      <!-- SP -->
 	      <div id="btn_menu"><a href="javascript:void(0)">
