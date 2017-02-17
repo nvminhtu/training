@@ -190,6 +190,9 @@ function tag_show_func($atts) {
 }
 function bwp_wp_tag_cloud($echo = false) {	
 	$args = array(
+		'unit' => 'px',
+		'smallest' => '12',
+		'largest' => '12',
 		'format' => 'list',
 		'orderby' => 'count',
 		'order' => 'DESC',

@@ -22,7 +22,7 @@
 						$editor_avatar_url = $editor_gallery[0]['sizes']['img_avatar'];
 			?>
 			<p class="article_detail_date">
-          		<?php the_time('Y年n月j日'); ?>更新
+          		<?php the_time('Y年n月j日'); ?>更新<?php echo do_shortcode('[post-views]'); ?>
           	</p>
          	<p class="article_detail_title"><?php the_title(); ?></p>
           		<div class="article_detail_box_cm clearfix">

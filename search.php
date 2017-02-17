@@ -1,76 +1,79 @@
 <?php
 /**
- * The template for displaying search results pages.
- *
- * @package WordPress
- * @subpackage Twenty_Fifteen
- * @since Twenty Fifteen 1.0
+ * Search Result Page
+ * Traijing theme
  */
 
 get_header(); ?>
+<div id="main" class="clearfix">
+    <div class="inner clearfix">
+      <div id="content" class="clearfix">
+        <h2 class="ttl_h201"><?php single_cat_title(); ?></h2>
+        <div class="ct_article_box clearfix">
+          <div class="ct_article_list_out clearfix"> 
+            <!-- ct_article_list -->
+            <?php 
+            	if ( have_posts() ) :
+					while ( have_posts() ) : the_post();
+						$author_id = get_the_author_meta('ID');
+						$thumb = get_post_thumbnail_id();
+                  		$img_url = wp_get_attachment_url($thumb,'img_blog_list');
+                  		$editor_gallery = get_field('profile_picture', 'user_'. $author_id);
+						$editor_avatar_url = $editor_gallery[0]['sizes']['img_author_tiny'];
+						$nicename = get_the_author_meta( 'user_nicename', $author_id );
+			?>
+						<div class="list_ct_article clearfix">
+			              <div class="list_ct_article_img">
+			                <p>
+			                	<a href="<?php the_permalink(); ?>">
+			                		<?php if(has_post_thumbnail()) { ?>
+			                			<img src="<?php echo $img_url; ?>" alt="<?php the_title(); ?>">
+			                		<?php } else { ?> 
+			                			<img src="<?php bloginfo('template_url'); ?>/images/dummy220x164.jpg" alt="<?php the_title(); ?>">
+			                		<?php } ?>
+			                	</a>
+			                </p>
+			              </div>
+			              <div class="list_ct_article_ct">
+			                <p class="list_ct_article_title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
+			                <p class="list_ct_article_txt">
+				                <?php //show content limited
+		                            $content_display = mb_substr(wp_strip_all_tags( get_the_content()), 0, 120, 'UTF-8'); 
+		                              $content_length = mb_strlen($content_display);
+		                            if($content_length > 119) {
+		                              echo $content_display.' ...';
+		                            } else {
+		                              echo $content_display;
+		                            }
+		                        ?>
+	                        </p>
+			                <div class="list_ct_article_info clearfix">
+			                  <ul>
+			                     <li class="ct_date01"><?php the_date('Y.m.d'); ?></li>
+			                    <li class="ct_view01">43,215</li>
+			                    <li class="ct_heart">442</li>
+			                  </ul>
+			                  <p class="pl_auther"><span><img src="<?php echo $editor_avatar_url; ?>" width="28" height="28" alt=""></span><?php echo $nicename; ?></p>
+			                </div>
+			              </div>
+			            </div>
+			<?php	endwhile;
 
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+					wp_pagenavi(); //pagination
+				else :
 
-		<?php if ( have_posts() ) : ?>
+				endif;
+			?>
+            <!-- // end: ct_article_list -->
+          <!-- .ct_article_list_out --></div>
 
-			<header class="page-header">
-				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentyfifteen' ), get_search_query() ); ?></h1>
-			</header><!-- .page-header -->
-
-			<?php
-			// Start the loop.
-			while ( have_posts() ) : the_post(); ?>
-      <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
-
-        <header class="entry-header">
-          <?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
-        </header><!-- .entry-header -->
-
-        <div class="entry-summary">
-          <?php the_excerpt(); ?>
-        </div><!-- .entry-summary -->
-
-        <?php if ( 'post' == get_post_type() ) : ?>
-
-          <footer class="entry-footer">
-            <?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?>
-          </footer><!-- .entry-footer -->
-
-        <?php else : ?>
-
-          <?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<footer class="entry-footer"><span class="edit-link">', '</span></footer><!-- .entry-footer -->' ); ?>
-
-        <?php endif; ?>
-
-        </article><!-- #post-## -->
-				<?php
-				/*
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-			//	get_template_part( 'content', 'search' );
-
-			// End the loop.
-			endwhile;
-
-			// Previous/next page navigation.
-			the_posts_pagination( array(
-				'prev_text'          => __( 'Previous page', 'twentyfifteen' ),
-				'next_text'          => __( 'Next page', 'twentyfifteen' ),
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentyfifteen' ) . ' </span>',
-			) );
-
-		// If no content, include the "No posts found" template.
-		else :
-			get_template_part( 'content', 'none' );
-
-		endif;
-		?>
-
-		</main><!-- .site-main -->
-	</section><!-- .content-area -->
+        </div>
+      </div>
+      <!-- start : #navi -->
+      <?php get_sidebar(); ?>
+      <!-- end : #navi --> 
+    </div>
+  </div>
+	
 
 <?php get_footer(); ?>

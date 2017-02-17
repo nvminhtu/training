@@ -1,104 +1,79 @@
-<?php get_header(); ?>
-<!-- main start -->
+<?php
+/**
+ * Category of Traijing
+ * Traijing theme
+ */
+
+get_header(); ?>
 <div id="main" class="clearfix">
-  <div class="inner ftb">
-    <div id="topic_path" class="clearfix">
-      <ul>
-        <li><a href="<?php bloginfo('siteurl'); ?>">HOME</a> &gt; </li>
-        <li><a href="<?php bloginfo('siteurl'); ?>/blog/">ブログ一覧</a> &gt; </li>
-        <li>
-          <?php
-            $term_slug = get_queried_object()->slug;
-            $term_name = get_queried_object()->name;
-            echo $term_name;
-          ?>
-        </li>
-      </ul>
-    </div>
-    <div id="container" class="clearfix">
+    <div class="inner clearfix">
       <div id="content" class="clearfix">
-        <h3 class="title_lblog"><?php echo $term_name; ?></h3>
-        <div class="box_archive_blog clearfix">
-        <?php
-        $current_tag = get_query_var('tag');
-        $query = new WP_Query( array(
-            'tag' => $current_tag,
-            'post_type' => 'blog'
-          ) );
-
-          while ( $query->have_posts() ) : $query->the_post();
+        <h2 class="ttl_h201"><?php single_cat_title(); ?></h2>
+        <div class="ct_article_box clearfix">
+          <div class="ct_article_list_out clearfix"> 
+            <!-- ct_article_list -->
+            <?php 
+              if ( have_posts() ) :
+          while ( have_posts() ) : the_post();
+            $author_id = get_the_author_meta('ID');
             $thumb = get_post_thumbnail_id();
-            $img_url = wp_get_attachment_url($thumb,'full');
-            $img_blog = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID),'img_blog');
-            $img_archive_blog = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID),'img_archive_blog');
-            $img_blog_src = $img_blog[0];
-            $img_archive_blog_src = $img_archive_blog[0];
+                      $img_url = wp_get_attachment_url($thumb,'img_blog_list');
+                      $editor_gallery = get_field('profile_picture', 'user_'. $author_id);
+            $editor_avatar_url = $editor_gallery[0]['sizes']['img_author_tiny'];
+            $nicename = get_the_author_meta( 'user_nicename', $author_id );
+      ?>
+            <div class="list_ct_article clearfix">
+                    <div class="list_ct_article_img">
+                      <p>
+                        <a href="<?php the_permalink(); ?>">
+                          <?php if(has_post_thumbnail()) { ?>
+                            <img src="<?php echo $img_url; ?>" alt="<?php the_title(); ?>">
+                          <?php } else { ?> 
+                            <img src="<?php bloginfo('template_url'); ?>/images/dummy220x164.jpg" alt="<?php the_title(); ?>">
+                          <?php } ?>
+                        </a>
+                      </p>
+                    </div>
+                    <div class="list_ct_article_ct">
+                      <p class="list_ct_article_title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
+                      <p class="list_ct_article_txt">
+                        <?php //show content limited
+                                $content_display = mb_substr(wp_strip_all_tags( get_the_content()), 0, 120, 'UTF-8'); 
+                                  $content_length = mb_strlen($content_display);
+                                if($content_length > 119) {
+                                  echo $content_display.' ...';
+                                } else {
+                                  echo $content_display;
+                                }
+                            ?>
+                          </p>
+                      <div class="list_ct_article_info clearfix">
+                        <ul>
+                           <li class="ct_date01"><?php the_date('Y.m.d'); ?></li>
+                          <li class="ct_view01">43,215</li>
+                          <li class="ct_heart">442</li>
+                        </ul>
+                        <p class="pl_auther"><span><img src="<?php echo $editor_avatar_url; ?>" width="28" height="28" alt=""></span><?php echo $nicename; ?></p>
+                      </div>
+                    </div>
+                  </div>
+      <?php endwhile;
 
-            // get the term <blog-cat> of the post ID
-            $terms = get_the_terms( get_the_ID(), 'blog-cat' );
-            if ( $terms && ! is_wp_error( $terms ) ) :
-              $selectTermID = $terms[0]->term_id;
-            endif;
+          wp_pagenavi(); //pagination
+        else :
 
-            $get_term_id = 'blog-cat_'.$selectTermID;
-            $term_color_code = get_field('color_code', $get_term_id);
-            $term_color_codes = explode("#", $term_color_code);
-            $color_class = 'blog-cat-'.$term_color_codes[1];
+        endif;
+      ?>
+            <!-- // end: ct_article_list -->
+          <!-- .ct_article_list_out --></div>
 
-            $time = get_the_date('Y.m.d', $post->ID);
-            $nd = get_the_content();
-            $id= get_the_ID();
-            $check_new_for_blog = get_post_meta($post->ID, 'check_new_for_blog',true);
-        ?>
-        <div class="<?php echo $color_class; ?> bloglist_box01 box_link" data-color-code="<?php echo $term_color_code; ?>">
-          <div class="blog_img">
-            <a href="<?php echo get_permalink(); ?>">
-              <?php if (!empty($check_new_for_blog)){ ?>
-              <span class="blog_inew"><span>NEW!</span></span>
-              <?php } ?>
-              <img src="<?php echo $img_archive_blog_src; ?>" alt="<?php the_title(); ?>">
-              <span class="blog_time"><?php echo $time; ?></span>
-            </a>
-          </div>
-          <div class="blog_idx_info">
-            <p class="blog_title"><?php the_title(); ?></p>
-            <div class="blog_list_n blog_cate_list">
-              <?php
-                // 01. Load Cats of Blog
-                $terms = wp_get_post_terms($post->ID, 'blog-cat', '');
-                if ( !empty( $terms ) && !is_wp_error( $terms ) ){
-                     echo "<ul class='blog_list_tag clearfix'>";
-                     foreach ( $terms as $term ) {
-                       echo "<li><a href='".get_term_link($term)."'>" . $term->name . "</a></li>";
-                     }
-                     echo "</ul>";
-                 }
-              ?>
-            </div>
-            <div class="blog_list_n blog_tag_list">
-              <?php
-              // 02. Load Tags
-              if(has_tag()) {
-                the_tags( '<ul class="blog_list_tag clearfix"><li>', '</li><li>', '</li></ul>' );
-              } else { ?>
-              <ul class="blog_list_tag clearfix">
-                <li></li>
-              </ul>
-              <?php } ?>
-
-            </div>
-          </div>
         </div>
-        <?php endwhile;
-
-          wp_reset_query();
-        ?>
-        </div>
-        <p class="btn btn01 btn_hblue btn_mw500"><a id="more_blog" href="javascript:void(0)"><span>もっと見る</span></a></p>
       </div>
+      <!-- start : #navi -->
       <?php get_sidebar(); ?>
+      <!-- end : #navi --> 
     </div>
   </div>
-</div>
-<!-- main end -->
+  
+
 <?php get_footer(); ?>
