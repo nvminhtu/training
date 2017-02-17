@@ -21,7 +21,11 @@
               $insta_access_token = get_the_author_meta('insta_access_token', $author_id);
 
               //access_token - which was taken from user Tu
-              $insta_access_token = '3924456062.54da896.0040c00f27ef4411998a26645a452f34';
+              //$insta_access_token = '3924456062.54da896.0040c00f27ef4411998a26645a452f34';
+
+              $insta_access_token = '4652465700.d90570a.e43fa6feb62946f0b15ec8a84f695246';
+              //access_token - which was taken from user Kei
+              //$insta_access_token = '3652282694.870d961.62085ef3251e4f459373228c95430d7a';
 
           ?>
          

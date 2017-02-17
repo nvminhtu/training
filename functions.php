@@ -135,4 +135,9 @@ if( function_exists('acf_add_options_page') ) {
   ));
 }
 
+/*** 06. Fix other plugins ***/
+add_action( 'wp_print_scripts', 'my_deregister_javascript', 100 );
+function my_deregister_javascript() {
+  wp_deregister_script( 'contact-form-7' );
+}
 ?>

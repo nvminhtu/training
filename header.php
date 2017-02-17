@@ -44,16 +44,7 @@
 <?php } ?>
 
 <?php if(!(is_front_page()||is_home())) { ?>
-	<script>
-		$(window).load(function() {
-	        $('#traijing_slider01').bxSlider({
-				mode: 'fade',
-				controls: false,
-				auto: true,
-	 			pagerCustom: '#tr_slider_pager'
-		});
-	 });
-	</script>
+	<script src="<?php bloginfo('template_url'); ?>/js/user-gallery.js" type="text/javascript"></script>
 <?php } ?>
 <?php wp_head(); ?>
 </head>

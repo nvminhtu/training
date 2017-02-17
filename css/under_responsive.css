@@ -24,6 +24,11 @@ h2.ttl_h201{
     padding: 20px 0 20px;
     width: 35%;
 }
+
+#slide_torejin,#ct_insta_list{
+		width:90%;
+		margin:0 auto;
+}
 }
 
 
