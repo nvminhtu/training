@@ -565,7 +565,6 @@ p.ptitle_01 {
 	
 }
 	
-	
 #ct_insta_list {
 	width: 100%;
 	max-width: 930px;
@@ -574,12 +573,63 @@ p.ptitle_01 {
 	
 .ct_insta_bx01{
 	width:100%;
-	height:375px;
-	background:#7A7A7A;
 	
+}
+.ct_insta_bx01_inner{
+	border:1px solid #E5E5E5;
+	padding:3px;
+	background:#fff;
+}
+.insta_img01{
+	text-align:center;
+	margin-bottom:3px;
+}
+.insta_img01 img{
+	max-height:293px !important;
+	width:auto !important;
+	display:inline-block !important;
+}
+.insta_box_info{
+	background:#fff;
+	padding:10px 5px 0 5px;
+
+}
+.insta_client_img{
+	float:left;
+	width:45px;
+}
+.insta_client_img img{
+	width:45px;
+	height:45px;
+	-webkit-border-radius: 45px;
+-moz-border-radius: 45px;
+border-radius: 45px;
+}
+.insta_client_info{
+	float:left;
+	width:calc(100% - 45px);
+	padding-left:8px;
+	box-sizing:border-box;
+}
+.insta_box_info p{
+	margin-bottom:5px;
+	line-height:1.5em;
 }
 	
 	
+.insta_client_name{
+	font-size:14px;
+	float:left;
+}
+.insta_client_date{
+	font-size:12px;
+	float:right;
+	color:#666666;
+}
+.insta_client_des{
+	font-size:13px;
+	clear:both;
+}
 	
 	
 	

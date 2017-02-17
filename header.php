@@ -76,13 +76,14 @@
 	      <?php if(!(is_front_page()||is_home())) { ?>
 	      <!-- Gnavi start -->
 	      <div id="gnavi" class="clearfix">
-	        <ul>
-	          <li class="active"><a href="<?php bloginfo('siteurl'); ?>/user-list/">トレーニング</a></li>
-	          <li><a href="#">健康・食品</a></li>
-	          <li><a href="#">スポーツ</a></li>
-	          <li><a href="#">ファッション</a></li>
-	          <li><a href="#">レジャー</a></li>
-	        </ul>
+	        <?php 
+	        	$defaults = array(
+					'theme_location'  => 'top-menu'
+				);
+
+				wp_nav_menu( $defaults );
+	        ?>
+	        
 	      </div>
 	      <!-- Gnavi end -->
 	      <?php } ?>
@@ -102,19 +103,27 @@
     
 	    <!-- nav for SP -->
 	     <div id="nav_gmenu_sp">
-	      <ul id="nav_menu_sp">
-	        <li><a href="#">トレーニング</a></li>
-	        <li><a href="#">健康・食品</a></li>
-	        <li><a href="#">スポーツ</a></li>
-	        <li><a href="#">ファッション</a></li>
-	        <li><a href="#">レジャー</a></li>
-	      </ul>
-	      <div class="search_nav clearfix">
-	        <div class="search_nav_inner">
-	          <input type="text" class="" placeholder="Search"/>
-	          <input type="submit" id="btn_search_nav" value="Search">
-	        </div>
-	      </div>
+	     	<?php 
+	        	$defaults = array(
+					'theme_location'  => 'top-menu',
+					'menu_class'      => 'nav_menu_sp'
+				);
+
+				wp_nav_menu( $defaults );
+	        ?>
+	      <!-- 	<ul id="nav_menu_sp">
+		        <li><a href="#">トレーニング</a></li>
+		        <li><a href="#">健康・食品</a></li>
+		        <li><a href="#">スポーツ</a></li>
+		        <li><a href="#">ファッション</a></li>
+		        <li><a href="#">レジャー</a></li>
+	      	</ul> -->
+	        <div class="search_nav clearfix">
+		        <div class="search_nav_inner">
+		          <input type="text" class="" placeholder="Search"/>
+		          <input type="submit" id="btn_search_nav" value="Search">
+		        </div>
+		     </div>
 	    </div>
 	    <!-- nav for SP -->
   	</div>

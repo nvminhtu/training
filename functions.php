@@ -45,10 +45,7 @@ add_filter( 'widget_text', 'do_shortcode');
 
 /*** 03.Setting for theme ***/
 if (function_exists('register_nav_menu')) {
-  register_nav_menu('sticky-menu-pc', 'Sticky Menu PC');
-  register_nav_menu('sticky-menu-sp', 'Sticky Menu SP');
-  register_nav_menu('service-menu', 'Service Menu');
-  register_nav_menu('top-menu', 'Top Menu');
+  register_nav_menu('top-menu', 'TOP MENU');
 }
 
 function add_custom_query_var( $vars ){

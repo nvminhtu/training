@@ -62,7 +62,7 @@ function footer_widget_fourth() {
  }
 add_action('widgets_init', 'footer_widget_three');
 
-// ----------------- 03. Add widget Bottom -----------------------
+// ----------------- 04. Add widget Bottom -----------------------
 function footer_widget_bottom() {
 	 register_sidebar(array(
 	  'name' => 'Footer Menu Bottom',
@@ -76,7 +76,22 @@ function footer_widget_bottom() {
  }
  add_action('widgets_init', 'footer_widget_bottom');
 
-// ----------------- 04. Add widget Sidebar -----------------------
+// ----------------- 05. Add widget Bottom -----------------------
+function footer_copyright_bottom() {
+	 register_sidebar(array(
+	  'name' => 'Footer Copyright Bottom',
+	  'class' => '',
+	  'description' => 'This is Copyright Widget at Bottom',
+	  'before_title' => '',
+	  'after_title' => '',
+	  'before_widget' => '',
+	  'after_widget' => '',
+	 ));
+ }
+ add_action('widgets_init', 'footer_copyright_bottom');
+
+
+// ----------------- 06. Add widget Sidebar -----------------------
 function sidebar_widget() {
 	register_sidebar(array(
 	  'name' => 'Sidebar Widget',
