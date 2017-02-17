@@ -111,17 +111,12 @@
 
 				wp_nav_menu( $defaults );
 	        ?>
-	      <!-- 	<ul id="nav_menu_sp">
-		        <li><a href="#">トレーニング</a></li>
-		        <li><a href="#">健康・食品</a></li>
-		        <li><a href="#">スポーツ</a></li>
-		        <li><a href="#">ファッション</a></li>
-		        <li><a href="#">レジャー</a></li>
-	      	</ul> -->
 	        <div class="search_nav clearfix">
 		        <div class="search_nav_inner">
-		          <input type="text" class="" placeholder="Search"/>
-		          <input type="submit" id="btn_search_nav" value="Search">
+		        	<form role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
+		          		<input type="text" value="<?php echo get_search_query(); ?>" name="s" class="" placeholder="Search" />
+		          		<input type="submit" id="btn_search_nav" value="Search">
+		          	</form>
 		        </div>
 		     </div>
 	    </div>

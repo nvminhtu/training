@@ -105,7 +105,34 @@ function sidebar_widget() {
  }
 add_action('widgets_init', 'sidebar_widget');
 
-// ----------------- 06. Custom code for removing wrap symbol -----------------------
+// ----------------- 06. Add homepage widget <top & bottom> -----------------------
+function homepage_widget_top() {
+	register_sidebar(array(
+	  'name' => 'Homepage Widget Top',
+	  'class' => '',
+	  'description' => 'This is Homepage Widget',
+	  'before_title' => '',
+	  'after_title' => '',
+	  'before_widget' => '<div class="cwidget-sidebar">',
+	  'after_widget' => '</div>',
+	 ));
+}
+add_action('widgets_init', 'homepage_widget_top');
+
+function homepage_widget_bottom() {
+	register_sidebar(array(
+	  'name' => 'Homepage Widget Bottom',
+	  'class' => '',
+	  'description' => 'This is Homepage Widget',
+	  'before_title' => '',
+	  'after_title' => '',
+	  'before_widget' => '<div class="cwidget-sidebar">',
+	  'after_widget' => '</div>',
+	 ));
+}
+add_action('widgets_init', 'homepage_widget_bottom');
+
+// ----------------- 07. Custom code for removing wrap symbol -----------------------
 // >> add [widget title] to prevent it display on
 function flexible_widget_titles( $widget_title ) {
   // get rid of any leading and trailing spaces
