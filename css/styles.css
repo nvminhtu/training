@@ -939,6 +939,18 @@ border-radius: 28px;}
 	background-size:18px auto;
 	padding-left:25px;
 }
+.list_latestpost_sb_info .post_view  {
+	float: right;
+}
+.post_view {
+	font-size:11px;
+	line-height:1.3em;
+	background:url(../images/icon_eye02.png) 0 center no-repeat;
+	background-size:18px auto;
+	padding-left:25px;
+	margin-left:25px;
+}
+
 
 .navi_ad01 p{
 	margin:0;

@@ -169,10 +169,12 @@ h2.ttl_h201 {
 	float: left;
 	margin-right: 25px;
 }
-.list_ct_article_info li.ct_view01 {
+.list_ct_article_info li.ct_view01 .post_view {
 	background: url(../images/icon_eye03.png) 0 center no-repeat;
 	background-size: 20px auto;
 	padding-left: 30px;
+	font-size: 14px;
+    color: #666666;
 }
 .list_ct_article_info li.ct_heart {
 	background: url(../images/icon_heart01.png) 0 center no-repeat;

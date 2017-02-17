@@ -84,7 +84,7 @@ function pickup_posts_func($atts) {
 					      </div>
 					      <div class="list_latestpost_sb_ct">
 					        <p class="list_latestpost_sb_title"><a href="'.get_permalink().'">'.get_the_title().'</a></p>
-					        <p class="list_latestpost_sb_info clearfix"><span class="nauther01">'.$nicename.'</span><span class="nview">66,539</span></p>
+					        <p class="list_latestpost_sb_info clearfix"><span class="nauther01">'.$nicename.'</span>'.do_shortcode('[post-views]').'</p>
 					      </div></dd>';
 		}
 		$return .='</dl>
@@ -154,7 +154,7 @@ function ranking_article_func($atts) {
 	      </div>
 	      <div class="list_latestpost_sb_ct">
 	        <p class="list_latestpost_sb_title"><a href="'.get_permalink().'">'.get_the_title().'</a></p>
-	        <p class="list_latestpost_sb_info clearfix"><span class="nauther01">'.$nicename.'</span><span class="nview">66,539</span></p>
+	        <p class="list_latestpost_sb_info clearfix"><span class="nauther01">'.$nicename.'</span>'.do_shortcode('[post-views]').'</p>
 	      </div>
 	    </dd>';
 	    	$i++;
