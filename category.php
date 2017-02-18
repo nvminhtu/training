@@ -51,7 +51,7 @@ get_header(); ?>
 			                  <ul>
 			                    <li class="ct_date01"><?php echo get_the_date('Y.m.d',$post->ID); ?></li>
 			                    <li class="ct_view01"><?php echo do_shortcode('[post-views]'); ?></li>
-			                    <li class="ct_heart">442</li>
+			                    <li><?php if( function_exists('zilla_likes') ) zilla_likes(); ?></li>
 			                  </ul>
 			                  <p class="pl_auther"><span><img src="<?php echo $editor_avatar_url; ?>" width="28" height="28" alt=""></span><?php echo $nicename; ?></p>
 			                </div>
