@@ -70,7 +70,7 @@
                       <?php } else { ?>
                           <img src="<?php bloginfo('template_url'); ?>/images/dummy100x100.jpg" alt="">
                       <?php } ?>
-                      <span class="pickup_box_view">43,215</span>
+                      <?php echo do_shortcode('[post-views]'); ?>
                     </a>
                   </p>
                 </div>

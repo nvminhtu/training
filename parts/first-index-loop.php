@@ -58,6 +58,12 @@
             $nicename = get_the_author_meta( 'user_nicename' );
             $editor_gallery = get_field('profile_picture', 'user_'. $author_id);
             $editor_avatar_url = $editor_gallery[0]['sizes']['img_author_tiny'];
+
+            $d1 = new DateTime( get_the_date('Y-m-d', $post->ID));
+            $d2 = new DateTime(date('Y-m-d'));
+            $interval = $d1->diff($d2);
+            $diff = $interval->format('%a');
+
           ?>
           <div class="col3 col clearfix">
             <div class="col_inner clearfix">
@@ -70,7 +76,10 @@
                       <img src="<?php bloginfo('template_url'); ?>/images/dummy323x200.jpg" alt="<?php the_title(); ?>">
                     <?php } ?>
                     </a>
-                    <span><img src="<?php bloginfo('template_url'); ?>/images/icon_new01.png" alt="<?php the_title(); ?>"></span>
+                    <?php if($diff<3){ ?>
+                      <span><img src="<?php bloginfo('template_url'); ?>/images/icon_new01.png" alt="<?php the_title(); ?>"></span>
+                    <?php } ?>
+                   
                   </p>
                   <div class="pl_bottom">
                     <p class="pl_auther"><span><img src="<?php echo $editor_avatar_url; ?>" width="28" height="28" alt="<?php echo $nicename; ?>"></span><?php echo $nicename; ?></p>

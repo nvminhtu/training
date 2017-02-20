@@ -23,7 +23,7 @@
               //access_token - which was taken from user Tu
               //$insta_access_token = '3924456062.54da896.0040c00f27ef4411998a26645a452f34';
 
-              $insta_access_token = '4652465700.d90570a.e43fa6feb62946f0b15ec8a84f695246';
+              //$insta_access_token = '4652465700.d90570a.e43fa6feb62946f0b15ec8a84f695246';
               //access_token - which was taken from user Kei
               //$insta_access_token = '3652282694.870d961.62085ef3251e4f459373228c95430d7a';
 
@@ -121,7 +121,7 @@
         <?php /* ---------------### 02.Instagram of user -------------------------------- */ ?>
         <div class="ct_article_box clearfix">
           <p class="ptitle_02">Instagramの写真</p>
-          <?php echo do_shortcode('[ap_instagram_slider set_username="'.$insta_username.'" set_access_token="'.$insta_access_token.'"]'); ?>
+          <?php echo do_shortcode('[ap_instagram_slider set_username="'.$insta_username.'"]'); ?>
         </div>
         <?php /* ---------------### End 02.Instagram of user -------------------------------- */ ?>
         
@@ -162,9 +162,9 @@
                         </p>
                         <div class="list_ct_article_info clearfix">
                           <ul>
-                            <li class="ct_date01"><?php the_date('Y.m.d'); ?></li>
-                            <li class="ct_view01">43,215</li>
-                            <li class="ct_heart">442</li>
+                            <li class="ct_date01"><?php echo  get_the_date('Y.m.d',$post->ID); ?></li>
+                            <li class="ct_view01"><?php echo do_shortcode('[post-views]'); ?></li>
+                            <li><?php if( function_exists('zilla_likes') ) zilla_likes(); ?></li>
                           </ul>
                           <p class="pl_auther"><span><img src="<?php echo $editor_avatar_tiny; ?>" alt=""></span><?php echo $nicename; ?></p>
                         </div>

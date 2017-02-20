@@ -23,6 +23,7 @@
 			?>
 			<p class="article_detail_date">
           		<?php the_time('Y年n月j日'); ?>更新<?php echo do_shortcode('[post-views]'); ?>
+          		<span class="like_heart"><?php if( function_exists('zilla_likes') ) zilla_likes(); ?></span>
           	</p>
          	<p class="article_detail_title"><?php the_title(); ?></p>
           		<div class="article_detail_box_cm clearfix">

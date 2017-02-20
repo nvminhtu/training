@@ -11,4 +11,10 @@
     </li>
     <li>ルミネーションよりも私を見て？星屑宿るまぶたとほっぺの輝きメイク How to</li>
   </ul>
+   <?php 
+   		// if(function_exists('bcn_display'))
+	    // {
+	    //     bcn_display();
+	    // }
+    ?>
 </div>

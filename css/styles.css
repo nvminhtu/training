@@ -392,44 +392,28 @@ font-size:12px;
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .box_s_f{
 	float:right;
 	width:500px;
 }
-.box_s_f input[type="mail"],
-.box_s_f input[type="text"],.box_s_f textarea  {
+.box_s_f input[type="email"],
+.box_s_f input[type="text"],
+.box_s_f textarea  {
 	border:1px solid #CCCCCC;
 	float:left;
 	width:calc(100% - 80px);
 	box-sizing:border-box;
 	padding:5px;
 	margin-bottom:5px;
+}
+.box_s_f input[type="submit"] {
+	float:right;
+	width:65px;
+	line-height:70px;
+	background:#2E9E97;
+	border:none;
+	color:#fff;
+	cursor:pointer;
 }
 .box_s_f button{
 	float:right;
@@ -1076,6 +1060,7 @@ border-radius: 28px;}
 .torejin_bx01:hover,
 .list_ct_article:hover,
 .box_s_f button:hover,
+.box_s_f input[type="submit"]:hover,
 .list_ct_traijing:hover{
 	opacity:0.8;
 	cursor:pointer;
@@ -1135,5 +1120,31 @@ border-radius: 28px;}
 .wp-pagenavi a.last {
 	float: none;
 }	
-	
-	
+.pickup_box .post_view {
+	margin-left: 0;
+	line-height: inherit;
+	position: absolute;
+    right: 5px;
+    bottom: -5px;
+    font-size: 10px;
+    color: #111;
+    background: url(../images/icon_eye01.png) 0 center no-repeat;
+    background-size: 14px auto;
+    padding-left: 18px;
+}
+.like_heart {
+	margin-left: 15px;
+}
+/* #fix contact form 7 */
+.wpcf7-list-item-label {
+	font-size: 13px;
+}
+span.wpcf7-list-item {
+	display: block!important;
+}
+div.wpcf7-validation-errors {
+	border: 0!important;
+}
+span.wpcf7-not-valid-tip {
+	display: initial!important;
+}

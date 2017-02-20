@@ -58,19 +58,22 @@ function pickup_posts_func($atts) {
 		) );
 	// The Loop
 	if ( $the_query->have_posts() ) {
-		$time = get_the_date('Y.m.d', $post->ID);
-        $id = get_the_ID();
-        $author_id = $post->post_author;
-        $nicename = get_the_author_meta( 'user_nicename' );
-        $editor_gallery = get_field('profile_picture', 'user_'. $author_id);
-        $editor_avatar_url = $editor_gallery[0]['sizes']['img_author_tiny'];
-
+		
 		$return .='<div class="list_navi list_navi01 clearfix">
 		  	<dl>
 		    <dt>'.$title.'<span>'.$sub_title.'</span></dt>';
 				$return .= '<dd>';
 				while ( $the_query->have_posts() ) {
+					//get information
 					$the_query->the_post();
+					$time = get_the_date('Y.m.d', $post->ID);
+			        $id = get_the_ID();
+			        $author_id = $post->post_author;
+			        $nicename = get_the_author_meta( 'user_nicename',$author_id);
+			        $editor_gallery = get_field('profile_picture', 'user_'. $author_id);
+			        $editor_avatar_url = $editor_gallery[0]['sizes']['img_author_tiny'];
+			        //end information and return
+
 					$return .='<dd><div class="list_latestpost_sb_img">
 					        <p><a href="'.get_permalink().'">';
 					
@@ -117,10 +120,10 @@ function ranking_article_func($atts) {
 	        global $wp_query;
 
 	        $args = array(
-	          'numberposts' => $number_post,
-	          'orderby' => date,
-	          'order' => desc,
-	          'field' => 'slug'
+	          	'numberposts' => 3,
+	          	'suppress_filters' => false,
+				'orderby' => 'post_views',
+				'fields' => ''
 	        );
 	        $blog_posts = get_posts($args);
 	        if($blog_posts) {
@@ -148,7 +151,7 @@ function ranking_article_func($atts) {
 			    } else {
 			    	$return .='<img src="'.get_bloginfo('template_url').'/images/dummy60x60.jpg" alt="">'; 
 			    }
-	            $return .='<span class="certi certi01">1</span>
+	            $return .='<span class="certi certi0'.$i.'">'.$i.'</span>
 	          </a>
 	        </p>
 	      </div>

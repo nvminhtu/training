@@ -91,7 +91,34 @@ function footer_copyright_bottom() {
  add_action('widgets_init', 'footer_copyright_bottom');
 
 
-// ----------------- 06. Add widget Sidebar -----------------------
+// ----------------- 06. Add widget Sidebar Top -----------------------
+function sidebar_widget_top() {
+	register_sidebar(array(
+	  'name' => 'Sidebar Widget Top',
+	  'class' => '',
+	  'description' => 'This is sidebar Widget',
+	  'before_title' => '',
+	  'after_title' => '',
+	  'before_widget' => '<div class="cwidget-sidebar">',
+	  'after_widget' => '</div>',
+	 ));
+ }
+add_action('widgets_init', 'sidebar_widget_top');
+
+// ----------------- 07. Add widget Sidebar Botto,-----------------------
+function sidebar_widget_bottom() {
+	register_sidebar(array(
+	  'name' => 'Sidebar Widget Bottom',
+	  'class' => '',
+	  'description' => 'This is sidebar Widget',
+	  'before_title' => '',
+	  'after_title' => '',
+	  'before_widget' => '<div class="cwidget-sidebar">',
+	  'after_widget' => '</div>',
+	 ));
+ }
+add_action('widgets_init', 'sidebar_widget_bottom');
+
 function sidebar_widget() {
 	register_sidebar(array(
 	  'name' => 'Sidebar Widget',
@@ -104,8 +131,7 @@ function sidebar_widget() {
 	 ));
  }
 add_action('widgets_init', 'sidebar_widget');
-
-// ----------------- 06. Add homepage widget <top & bottom> -----------------------
+// ----------------- 08. Add homepage widget <top & bottom> -----------------------
 function homepage_widget_top() {
 	register_sidebar(array(
 	  'name' => 'Homepage Widget Top',
