@@ -333,12 +333,12 @@ font-size:12px;
   float: left;
   width: 100%;
 }
-.list_choose_ct li input[type=radio]{
+.list_choose_ct input[type=radio]{
   position: absolute;
   visibility: hidden;
 }
 
-.list_choose_ct li label{
+.list_choose_ct .wpcf7-list-item-label {
   display: block;
   position: relative;
   padding: 0px 0 0 25px;
@@ -351,7 +351,7 @@ font-size:12px;
 
 }
 
-.list_choose_ct li .check{
+.list_choose_ct .check{
   display: block;
   position: absolute;
   border: 1px solid #AAAAAA;
@@ -1147,4 +1147,10 @@ div.wpcf7-validation-errors {
 }
 span.wpcf7-not-valid-tip {
 	display: initial!important;
+}
+.list_choose_ct .wpcf7-list-item  {
+	display: block;
+    position: relative;
+    float: left;
+    width: 100%;
 }

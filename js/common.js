@@ -5,6 +5,11 @@ $(document).ready(function() {
 		 window.location=$(this).find("a").attr("href");
 		return false;
 	});
+	//contact form 7: add more div
+	//$("p").after($('.list_choose_ct .wpcf7-list-item-label'));
+	//$("p").after($('.wpcf7-list-item-label'));
+	//$("p").after($('.wpcf7-list-item-label'));
+	$("<div class='check'></div>").insertAfter( ".wpcf7-list-item-label" );
 });
 
 
