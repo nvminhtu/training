@@ -380,6 +380,9 @@ address{
 }
 
 @media screen and (max-width: 400px) {
+.wpcf7-form-control-wrap{
+	width: 100%;
+}
 
 }
 
@@ -387,6 +390,14 @@ address{
 .pl_date {
 	width: 100%;
 	text-align: right;
+}
+
+.box_s_f .box_s_f input[type="submit"] {
+    display: block;
+    float: none;
+    line-height: 45px;
+    margin: 0 auto;
+    width: 80%;
 }
 }
 

@@ -58,7 +58,7 @@ var min = $('#s_navi').offset().top - 5;
 				$target.css({ top: top + max - $(window).scrollTop() });
 			} else {
 				
-				$target.css({ top: top + 90 });
+				$target.css({ top: top + 50 });
 				var sub = scrollTop - $(window).scrollTop();
 				sub = sub < 0
 						? Math.max( sub, -30 )

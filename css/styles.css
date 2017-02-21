@@ -401,7 +401,8 @@ font-size:12px;
 .box_s_f textarea  {
 	border:1px solid #CCCCCC;
 	float:left;
-	width:calc(100% - 80px);
+	/*width:calc(100% - 80px);*/
+	width:100%;
 	box-sizing:border-box;
 	padding:5px;
 	margin-bottom:5px;
@@ -1154,3 +1155,30 @@ span.wpcf7-not-valid-tip {
     float: left;
     width: 100%;
 }
+
+
+.box_s_f .wpcf7-form-control-wrap{
+	width: calc(100% - 80px);
+	float:left;
+}
+
+
+.box_s_f span.wpcf7-not-valid-tip{
+	width:100%;
+	float:left;
+	background:rgba(242,156,159,0.5);
+	margin-bottom:10px;
+	box-sizing:border-box;
+	padding:0 0 0 5px;
+	font-size:14px !important;
+	
+}
+
+.list_choose_ct .wpcf7-list-item-label{
+	line-height:1.4em;
+}
+
+.wpcf7-validation-errors{
+	display:none;
+}
+
