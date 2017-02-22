@@ -48,7 +48,7 @@
 		            </div>
 		         </div>
             <?php if(has_post_thumbnail()) { ?>
-	             <p class="center"><img src="<?php echo $img_blog_src; ?>" alt="<?php echo get_the_title(); ?>"></p>
+	             <p class="center"><img src="<?php echo $img_blog_src; ?>" alt="<?php echo get_the_title(); ?>" data-width="<?php echo $img_blog_w; ?>" data-height="<?php echo $img_blog_h; ?>" ></p>
             <?php } ?>
 	          <?php the_content(); ?>
 
