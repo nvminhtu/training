@@ -10,7 +10,7 @@ add_image_size( 'img_author_avatar', 260, 260, true );
 add_image_size( 'img_author_tiny', 56, 56, true );
 add_image_size( 'img_author_thumb', 116, 116, true );
 add_image_size( 'img_author_list', 330, 330, true );
-add_image_size( 'img_author_slider', 668, 9999);
+add_image_size( 'img_author_slider', 668, 374, true);
 
 // add image for post
 add_image_size( 'img_blog_list', 220, 164, true );
@@ -18,6 +18,8 @@ add_image_size( 'img_blog_index', 323, 200, true );
 add_image_size( 'img_blog_index_second', 100, 100, true );
 add_image_size( 'img_blog_sidebar', 120, 120, true );
 add_image_size( 'img_blog_related', 92, 70, true );
+add_image_size( 'img_blog_thumbnail', 640, 9999);
+
 // remove filter of wpautop
 // remove_filter( 'the_excerpt', 'wpautop' );
 // remove_filter( 'the_content', 'wpautop' );
@@ -71,7 +73,7 @@ function limit_content() {
   $content = preg_replace('/(<)([img])(\w+)([^>]*>)/', "", $content);
   $content = apply_filters('the_content', $content);
   $content = str_replace(']]>', ']]&gt;', $content);
-  echo $content;  
+  echo $content;
 }
 
 
@@ -121,11 +123,11 @@ function remove_website_row_wpse_94963_css() {
   echo '<style>tr.user-description-wrap{ display: none; }</style>';
 }
 add_action( 'admin_head-user-edit.php', 'remove_website_row_wpse_94963_css' );
-add_action( 'admin_head-profile.php',   'remove_website_row_wpse_94963_css' ); 
+add_action( 'admin_head-profile.php',   'remove_website_row_wpse_94963_css' );
 
 /*** 05. Add options page ***/
 if( function_exists('acf_add_options_page') ) {
-  
+
   acf_add_options_page(array(
     'page_title'  => 'Theme General Settings',
     'menu_title'  => 'Theme Settings',

@@ -10,15 +10,15 @@ get_header(); ?>
       <div id="content" class="clearfix">
         <h2 class="ttl_h201"><?php single_cat_title(); ?></h2>
         <div class="ct_article_box clearfix">
-          <div class="ct_article_list_out clearfix"> 
+          <div class="ct_article_list_out clearfix">
             <!-- ct_article_list -->
-            <?php 
+            <?php
               if ( have_posts() ) :
           while ( have_posts() ) : the_post();
             $author_id = get_the_author_meta('ID');
-            $thumb = get_post_thumbnail_id();
-                      $img_url = wp_get_attachment_url($thumb,'img_blog_list');
-                      $editor_gallery = get_field('profile_picture', 'user_'. $author_id);
+            $img_blog = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID),'img_blog_list');
+            $img_blog_src = $img_blog[0];
+            $editor_gallery = get_field('profile_picture', 'user_'. $author_id);
             $editor_avatar_url = $editor_gallery[0]['sizes']['img_author_tiny'];
             $nicename = get_the_author_meta( 'user_nicename', $author_id );
       ?>
@@ -27,8 +27,8 @@ get_header(); ?>
                       <p>
                         <a href="<?php the_permalink(); ?>">
                           <?php if(has_post_thumbnail()) { ?>
-                            <img src="<?php echo $img_url; ?>" alt="<?php the_title(); ?>">
-                          <?php } else { ?> 
+                            <img src="<?php echo $img_blog_src; ?>" alt="<?php the_title(); ?>">
+                          <?php } else { ?>
                             <img src="<?php bloginfo('template_url'); ?>/images/dummy220x164.jpg" alt="<?php the_title(); ?>">
                           <?php } ?>
                         </a>
@@ -38,7 +38,7 @@ get_header(); ?>
                       <p class="list_ct_article_title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
                       <p class="list_ct_article_txt">
                         <?php //show content limited
-                                $content_display = mb_substr(wp_strip_all_tags( get_the_content()), 0, 120, 'UTF-8'); 
+                                $content_display = mb_substr(wp_strip_all_tags( get_the_content()), 0, 120, 'UTF-8');
                                   $content_length = mb_strlen($content_display);
                                 if($content_length > 119) {
                                   echo $content_display.' ...';
@@ -71,9 +71,9 @@ get_header(); ?>
       </div>
       <!-- start : #navi -->
       <?php get_sidebar(); ?>
-      <!-- end : #navi --> 
+      <!-- end : #navi -->
     </div>
   </div>
-  
+
 
 <?php get_footer(); ?>
