@@ -3,10 +3,11 @@
 <!-- main start -->
 <div id="main" class="clearfix">
   <div class="inner">
+  	<?php include('parts/breadcrumbs.php'); ?>
     <?php
 		// Start the loop.
 		while ( have_posts() ) : the_post();
-      the_content();
+     		the_content();
 		endwhile;
     // End of the loop.
 		?>

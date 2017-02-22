@@ -8,6 +8,7 @@ get_header(); ?>
 <div id="main" class="clearfix">
     <div class="inner clearfix">
       <div id="content" class="clearfix">
+      	<?php include('parts/breadcrumbs.php'); ?>
         <h2 class="ttl_h201"><?php single_cat_title(); ?></h2>
         <div class="ct_article_box clearfix">
           <div class="ct_article_list_out clearfix">
@@ -16,10 +17,10 @@ get_header(); ?>
             	if ( have_posts() ) :
 					while ( have_posts() ) : the_post();
 						$author_id = get_the_author_meta('ID');
-            $img_blog = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID),'img_blog_list');
-            $img_blog_src = $img_blog[0];
+            			$img_blog = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID),'img_blog_list');
+           				$img_blog_src = $img_blog[0];
 
-            $editor_gallery = get_field('profile_picture', 'user_'. $author_id);
+           				$editor_gallery = get_field('profile_picture', 'user_'. $author_id);
 						$editor_avatar_url = $editor_gallery[0]['sizes']['img_author_tiny'];
 						$nicename = get_the_author_meta( 'user_nicename', $author_id );
 			?>

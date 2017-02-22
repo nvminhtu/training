@@ -8,6 +8,7 @@ get_header(); ?>
 <div id="main" class="clearfix">
     <div class="inner clearfix">
       <div id="content" class="clearfix">
+      	<?php include('parts/breadcrumbs.php'); ?>
         <h2 class="ttl_h201"><?php single_cat_title(); ?></h2>
         <div class="ct_article_box clearfix">
           <div class="ct_article_list_out clearfix">
