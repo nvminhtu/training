@@ -37,24 +37,24 @@
             <div class="col_inner clearfix">
               <div class="plist_info clearfix">
                 <p class="pimg01">
-                  <?php if(has_post_thumbnail()) { ?>
-                    <img src="<?php echo $img_blog_src; ?>" alt="<?php the_title(); ?>">
-                  <?php } else { ?>
-                    <img src="<?php bloginfo('template_url'); ?>/images/dummy323x200.jpg" alt="<?php the_title(); ?>">
-                  <?php } ?>
+                  <a href="<?php echo get_permalink($id); ?>">
+                    <?php if(has_post_thumbnail()) { ?>
+                      <img src="<?php echo $img_blog_src; ?>" alt="<?php the_title(); ?>">
+                    <?php } else { ?>
+                      <img src="<?php bloginfo('template_url'); ?>/images/dummy323x200.jpg" alt="<?php the_title(); ?>">
+                    <?php } ?>
+                  </a>
                   <span><img src="<?php bloginfo('template_url'); ?>/images/icon_new01.png" alt=""></span>
                 </p>
                 <div class="pl_bottom">
-                  <p class="pl_auther"><span>
-                    <a href="<?php get_permalink($post->ID); ?>">
-                      <img src="<?php echo $editor_avatar_url; ?>" width="28" height="28" alt="<?php echo $nicename; ?>">
-                    </a></span>
+                  <p class="pl_auther">
+                    <span><img src="<?php echo $editor_avatar_url; ?>" width="28" height="28" alt="<?php echo $nicename; ?>"></span>
                     <?php echo $nicename; ?>
                   </p>
                   <p class="pl_date"><?php echo $time; ?></p>
                 </div>
               </div>
-              <p class="pl_title"><?php  echo $title; ?></p>
+              <p class="pl_title"><a href="<?php echo get_permalink($post->ID); ?>"><?php  echo $title; ?></a></p>
             </div>
           </div>
           <?php endwhile; ?>

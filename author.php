@@ -18,14 +18,6 @@
               $editor_gallery = get_field('profile_picture', 'user_'. $author_id);
               $editor_avatar_tiny = $editor_gallery[0]['sizes']['img_author_tiny'];
               $insta_username = get_the_author_meta('insta_username', $author_id);
-              $insta_access_token = get_the_author_meta('insta_access_token', $author_id);
-
-              //access_token - which was taken from user Tu
-              //$insta_access_token = '3924456062.54da896.0040c00f27ef4411998a26645a452f34';
-
-              //$insta_access_token = '4652465700.d90570a.e43fa6feb62946f0b15ec8a84f695246';
-              //access_token - which was taken from user Kei
-              //$insta_access_token = '3652282694.870d961.62085ef3251e4f459373228c95430d7a';
 
           ?>
          
@@ -133,16 +125,17 @@
                   // Start the Loop.
                 while ( have_posts() ) : the_post(); 
                   $thumb = get_post_thumbnail_id();
-                  $img_url = wp_get_attachment_url($thumb,'img_blog_list'); 
+                  $img_blog = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID),'img_blog_list');
+                  $img_blog_src = $img_blog[0];
                 ?>
                     <div class="list_ct_article clearfix">
                       <div class="list_ct_article_img">
                         <p>
                           <a href="<?php the_permalink(); ?>">
                           <?php if(has_post_thumbnail()) { ?>
-                            <img src="<?php echo $img_url; ?>" width="220" height="164" alt="<?php the_title(); ?>">
+                            <img src="<?php echo $img_blog_src; ?>" alt="<?php the_title(); ?>">
                           <?php } else { ?>
-                            <img src="<?php bloginfo('template_url'); ?>/images/dummy220x164.jpg" width="220" height="164" alt="<?php the_title(); ?>">
+                            <img src="<?php bloginfo('template_url'); ?>/images/dummy220x164.jpg" alt="<?php the_title(); ?>">
                           <?php } ?>
                           </a>
                         </p>
