@@ -25,6 +25,8 @@
             $thumb = get_post_thumbnail_id();
             $img_blog = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID),'img_blog_thumbnail');
             $img_blog_src = $img_blog[0];
+            $img_blog_w = $img_blog[1];
+            $img_blog_h = $img_blog[2];
 			?>
 			<p class="article_detail_date">
           		<?php the_time('Y年n月j日'); ?>更新<?php echo do_shortcode('[post-views]'); ?>
@@ -48,7 +50,10 @@
 		            </div>
 		         </div>
             <?php if(has_post_thumbnail()) { ?>
-	             <p class="center"><img src="<?php echo $img_blog_src; ?>" alt="<?php echo get_the_title(); ?>" data-width="<?php echo $img_blog_w; ?>" data-height="<?php echo $img_blog_h; ?>" ></p>
+	             <div class="center">
+	             	<img src="<?php echo $img_blog_src; ?>" alt="<?php echo get_the_title(); ?>" data-width="<?php echo $img_blog_w; ?>" data-height="<?php echo $img_blog_h; ?>" >
+	             	<p class="pic_description" style="width: <?php echo $img_blog_w; ?>px;">▲アーノルド・シュワルツネッガー州知事。マッチョであり、州知事であり、ハリウッドスターである彼は最大の成功者？</p>
+	             </div>
             <?php } ?>
 	          <?php the_content(); ?>
 

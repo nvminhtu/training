@@ -1181,4 +1181,15 @@ span.wpcf7-not-valid-tip {
 .wpcf7-validation-errors{
 	display:none;
 }
-
+#traijing_slider01 li {
+  text-align: center;
+  background: #AAAAAA;
+}
+.bx-wrapper #traijing_slider01 img {
+    max-width: 100%; 
+    width: auto;
+    margin: 0 auto; 
+}
+.pic_description {
+	margin: 0 auto;
+}
