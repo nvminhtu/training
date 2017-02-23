@@ -54,7 +54,11 @@
                         if($i<3) {
                       ?>
                         <li>
-                          <img src="<?php echo $image['sizes']['img_author_slider']; ?>" alt="<?php echo $image['alt']; ?>"/>
+                          <?php if($image['sizes']['img_author_slider-width']<668) { ?>
+                            <img src="<?php echo $image['sizes']['img_author_slider']; ?>" alt="<?php echo $image['alt']; ?>"/>
+                          <?php } else  { ?>
+                            <img src="<?php echo $image['sizes']['img_author_slider_fixed']; ?>" alt="<?php echo $image['alt']; ?>"/>
+                          <?php } ?>
                         </li>  
                       <?php } 
                       $i++; 

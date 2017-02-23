@@ -5,16 +5,18 @@
       <?php
         $banner_top_title = get_field( 'banner_top_title','option');
         $banner_picture_upload = get_field( 'banner_picture_upload','option');
+        $banner_picture_url = get_field( 'homepage_banner_link','option');
+
         if( $banner_top_title ) { ?>
           <div class="topic_path clearfix">
             <ul>
-              <li><a href="#"><?php echo $banner_top_title; ?></a></li>
+              <li><?php echo $banner_top_title; ?></li>
             </ul>
           </div>
         <?php }
         if( $banner_picture_upload ) { ?>
           <div class="ct_bnr01">
-            <p><img src="<?php echo $banner_picture_upload; ?>" alt=""></p>
+            <p><a href="<?php echo $banner_picture_url; ?>"><img src="<?php echo $banner_picture_upload; ?>" alt=""></a></p>
           </div>
         <?php }
       ?>
