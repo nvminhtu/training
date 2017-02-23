@@ -1198,14 +1198,19 @@ span.wpcf7-not-valid-tip {
 	display: block;
 	margin: 0 auto;
 }
-.featured_picture span {
+.featured_picture .desc {
 	position: absolute;
-	right: 10px;
+	right: 0px;
 	bottom: 0;
 }
-.featured_picture span,
-.featured_picture span a {
+.featured_picture .desc,
+.featured_picture .desc a {
 	color: #ffffff;
 	line-height: 1.8em;
 	font-size: 120%;
+	word-wrap: break-word;
+}
+.featured_picture .desc span {
+	float: right;
+	margin: 0 10px;
 }

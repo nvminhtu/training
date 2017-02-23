@@ -55,7 +55,9 @@
 	             <div class="center">
 	             	<div class="featured_picture" style="width: <?php echo $img_blog_w; ?>px;"><img src="<?php echo $img_blog_src; ?>" alt="<?php echo get_the_title(); ?>" data-width="<?php echo $img_blog_w; ?>" data-height="<?php echo $img_blog_h; ?>" >
 	             		<?php if(isset($img_refer_url) && $img_refer_url!=''){ ?>
-	             			<span>写真引用元： <a href="<?php echo $img_refer_url; ?>"><?php echo $img_refer_url; ?></a></span>
+	             			<div class="desc" style="width: <?php echo $img_blog_w; ?>px;">
+	             				<span>写真引用元： <a href="<?php echo $img_refer_url; ?>"><?php echo $img_refer_url; ?></a></span>
+	             			</div>
 	             		<?php } ?>
 	             	</div>
 	             	<?php if(isset($img_caption) && $img_caption!='') { ?>
