@@ -28,6 +28,7 @@
 			            $img_blog_w = $img_blog[1];
 			            $img_blog_h = $img_blog[2];
 			            $img_caption = get_post(get_post_thumbnail_id($post->ID))->post_excerpt;
+			            $img_refer_url = get_post(get_post_thumbnail_id($post->ID))->post_content;
 			?>
 			<p class="article_detail_date">
           		<?php the_time('Y年n月j日'); ?>更新<?php echo do_shortcode('[post-views]'); ?>
@@ -52,7 +53,11 @@
 		         </div>
             <?php if(has_post_thumbnail()) { ?>
 	             <div class="center">
-	             	<div class="featured_picture"><img src="<?php echo $img_blog_src; ?>" alt="<?php echo get_the_title(); ?>" data-width="<?php echo $img_blog_w; ?>" data-height="<?php echo $img_blog_h; ?>" ></div>
+	             	<div class="featured_picture" style="width: <?php echo $img_blog_w; ?>px;"><img src="<?php echo $img_blog_src; ?>" alt="<?php echo get_the_title(); ?>" data-width="<?php echo $img_blog_w; ?>" data-height="<?php echo $img_blog_h; ?>" >
+	             		<?php if(isset($img_refer_url) && $img_refer_url!=''){ ?>
+	             			<span>写真引用元： <a href="<?php echo $img_refer_url; ?>"><?php echo $img_refer_url; ?></a></span>
+	             		<?php } ?>
+	             	</div>
 	             	<?php if(isset($img_caption) && $img_caption!='') { ?>
 	             		<p class="pic_description" style="width: <?php echo $img_blog_w; ?>px;">
 	             		▲<?php echo $img_caption; ?></p>

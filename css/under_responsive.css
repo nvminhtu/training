@@ -7,6 +7,9 @@
 .pic_description {
 	max-width: 100%;
 }
+.featured_picture {
+	max-width: 100%;
+}
 .ct_article_detail{
 	padding:10px;
 }
