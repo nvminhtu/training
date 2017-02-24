@@ -20,6 +20,13 @@ $(document).ready(function() {
 	   }
 	});
 
+	$('.ct_article_detail a').each(function() {
+   	   var a = new RegExp('/' + window.location.host + '/');
+	   if(!a.test(this.href)) {
+	       $(this).addClass('external');
+	   }
+	});
+
 });
 
 
@@ -83,10 +90,3 @@ $(window).bind("load",function(){
   });
   
 });
-
-
-
-
-
-
-
