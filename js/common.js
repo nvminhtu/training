@@ -27,6 +27,17 @@ $(document).ready(function() {
 	   }
 	});
 
+	/** $('.insta_img01').each(function() {
+		var insta_h = $(this).find('img').data('height');
+		if(insta_h < 289 ) {
+			$(this).addClass('insta_h');	
+		} else {
+			$(this).addClass('lon hon');
+		}
+		
+		
+	}); */
+	
 });
 
 
