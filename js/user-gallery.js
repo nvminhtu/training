@@ -3,7 +3,8 @@ $(document).ready(function(){
 		mode: 'fade',
 		controls: false,
 		auto: true,
-			pagerCustom: '#tr_slider_pager'
+		pagerCustom: '#tr_slider_pager',
+		adaptiveHeight: true,
 	});
 
 });
