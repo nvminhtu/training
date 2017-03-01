@@ -1192,6 +1192,8 @@ span.wpcf7-not-valid-tip {
 }
 .pic_description {
 	margin: 0 auto;
+	font-size:12px;
+	color:#4c4c4c;
 }
 .featured_picture {
 	position: relative;
