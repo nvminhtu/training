@@ -7,11 +7,11 @@ $(document).ready(function() {
 	});
 	// contact form 7: add more div
 	$("<div class='check'></div>").insertAfter( ".wpcf7-list-item-label" );
-	
+
 	// link open in new tab
-	$('a').each(function() {
+	$('#main a, #footer a').each(function() {
    	   var a = new RegExp('/' + window.location.host + '/');
-	   if(!a.test(this.href)) {
+	   if(!a.test(this.href)&&!a.test("#")&&!a.test("javascript:void(0)")) {
 	       $(this).click(function(event) {
 	           event.preventDefault();
 	           event.stopPropagation();
@@ -20,24 +20,20 @@ $(document).ready(function() {
 	   }
 	});
 
-	$('.ct_article_detail a').each(function() {
+	$('#content a').each(function() {
    	   var a = new RegExp('/' + window.location.host + '/');
-	   if(!a.test(this.href)) {
-	       $(this).addClass('external');
-	   }
+		 if($(this).parents('.featured_picture').length) {
+
+		 } else {
+			 if(!a.test(this.href)) {
+  	       $(this).addClass('external');
+  	   }
+		 }
+
 	});
 
-	/** $('.insta_img01').each(function() {
-		var insta_h = $(this).find('img').data('height');
-		if(insta_h < 289 ) {
-			$(this).addClass('insta_h');	
-		} else {
-			$(this).addClass('lon hon');
-		}
-		
-		
-	}); */
-	
+
+
 });
 
 
@@ -50,7 +46,7 @@ $(window).bind("load",function(){
 	$('#btn_menu').click(function(){
 		//fix bg outer dark
 		//$("#bg_box_out").toggleClass('active');
-		$("#bg_box_out").fadeToggle();		
+		$("#bg_box_out").fadeToggle();
 		//nav-icon toggle class open
 		$(this).find("#nav-icon").toggleClass('open');
 		//list_menu_sticky_header toggle
@@ -74,13 +70,13 @@ $(window).bind("load",function(){
 			$searchInput.focus();
 		}
   });
-  
+
   $searchInput.blur(function(){
     if($searchInput.val().length > 0){
       return false;
     } else {
-      
-     
+
+
 	 /* if($searchTrigger.hasClass("active")){
 			$searchTrigger.removeClass('active');
 		}
@@ -89,15 +85,15 @@ $(window).bind("load",function(){
 		}
      */
     }
-    
+
   });
-  
+
   $searchClear.click(function(){
     $searchInput.val('');
   });
-  
+
   $searchInput.focus(function(){
     $searchTrigger.addClass('active');
   });
-  
+
 });
