@@ -164,16 +164,16 @@ ul.list01 li:before{
 	background:#EB6877;
 }
 
-#content ul {
+.ct_article_detail ul {
 	margin-bottom:25px;
 }
 
-#content ul li{
+.ct_article_detail ul li{
 	position:relative;
 	padding-left:23px;
 }
 
-#content ul li:before{
+.ct_article_detail ul li:before{
 	width:10px;
 	height:8px;
 	content: "";
