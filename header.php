@@ -27,7 +27,6 @@
 
 <script src="<?php bloginfo('template_url'); ?>/js/jquery.js" type="text/javascript"></script>
 <script src="<?php bloginfo('template_url'); ?>/js/jquery.scroll.js" type="text/javascript"></script>
-<script src="//f.vimeocdn.com/js/froogaloop2.min.js"></script>
 <script src="<?php bloginfo('template_url'); ?>/js/common.js" type="text/javascript"></script>
 <script src="<?php bloginfo('template_url'); ?>/js/jquery.fitvids.js"></script>
 <script src="<?php bloginfo('template_url'); ?>/js/jquery.bxslider.js"></script>
