@@ -63,7 +63,7 @@
 <div id="wrapper">
   	<div id="header" class="clearfix">
     	<div class="inner clearfix">
-	      <p id="logo"><a href="<?php bloginfo('siteurl'); ?>"><img src="<?php bloginfo('template_url'); ?>/images/logo.png" alt=""></a></p>
+	      <p id="logo"><a href="<?php bloginfo('url'); ?>"><img src="<?php bloginfo('template_url'); ?>/images/logo.png" alt=""></a></p>
 	      <?php if(!(is_front_page()||is_home())) { ?>
 	      <!-- Gnavi start -->
 	      <div id="gnavi" class="clearfix">

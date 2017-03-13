@@ -7,7 +7,7 @@
           <dt>カテゴリー</dt>
           <dd>
             <ul>
-              <li class="c01"><a href="<?php bloginfo('siteurl'); ?>">
+              <li class="c01"><a href="<?php bloginfo('url'); ?>">
                 <span><img src="<?php bloginfo('template_url'); ?>/images/icon_cate01.png"></span>
                 ホーム</a>
               </li>

@@ -6,7 +6,8 @@
 // 01. Add widget 01
 function footer_widget_one()
  {
-	 register_sidebar(array(
+	register_sidebar(array(
+	  'id' => 'footer-menu-1',
 	  'name' => 'Footer Menu 1',
 	  'class' => '',
 	  'description' => 'This is Footer Widget one',
@@ -22,6 +23,7 @@ add_action('widgets_init', 'footer_widget_one');
 function footer_widget_two()
  {
 	 register_sidebar(array(
+	  'id' => 'footer-menu-2',
 	  'name' => 'Footer Menu 2',
 	  'class' => 'flink flink02 clearfix',
 	  'description' => 'This is Footer Widget two',
@@ -37,6 +39,7 @@ add_action('widgets_init', 'footer_widget_two');
 function footer_widget_three()
  {
 	 register_sidebar(array(
+	  'id' => 'footer-menu-3',
 	  'name' => 'Footer Menu 3',
 	  'class' => 'flink flink03 clearfix',
 	  'description' => 'This is Footer Widget three',
@@ -51,6 +54,7 @@ add_action('widgets_init', 'footer_widget_three');
 // 03. Add widget 04
 function footer_widget_fourth() {
 	 register_sidebar(array(
+	  'id' => 'footer-menu-4',
 	  'name' => 'Footer Menu 4',
 	  'class' => 'fcol fcol04 clearfix',
 	  'description' => 'This is Footer Widget fourth',
@@ -65,6 +69,7 @@ add_action('widgets_init', 'footer_widget_three');
 // ----------------- 04. Add widget Bottom -----------------------
 function footer_widget_bottom() {
 	 register_sidebar(array(
+	  'id' => 'footer-menu-bottom',
 	  'name' => 'Footer Menu Bottom',
 	  'class' => 'flink01 clearfix',
 	  'description' => 'This is Footer Widget at Bottom',
@@ -79,6 +84,7 @@ function footer_widget_bottom() {
 // ----------------- 05. Add widget Bottom -----------------------
 function footer_copyright_bottom() {
 	 register_sidebar(array(
+	  'id' => 'footer-copyright-bottom',
 	  'name' => 'Footer Copyright Bottom',
 	  'class' => '',
 	  'description' => 'This is Copyright Widget at Bottom',
@@ -94,6 +100,7 @@ function footer_copyright_bottom() {
 // ----------------- 06. Add widget Sidebar Top -----------------------
 function sidebar_widget_top() {
 	register_sidebar(array(
+	  'id' => 'sidebar-widget-top',
 	  'name' => 'Sidebar Widget Top',
 	  'class' => '',
 	  'description' => 'This is sidebar Widget',
@@ -108,6 +115,7 @@ add_action('widgets_init', 'sidebar_widget_top');
 // ----------------- 07. Add widget Sidebar Botto,-----------------------
 function sidebar_widget_bottom() {
 	register_sidebar(array(
+	  'id' => 'sidebar-widget-bottom',
 	  'name' => 'Sidebar Widget Bottom',
 	  'class' => '',
 	  'description' => 'This is sidebar Widget',
@@ -121,6 +129,7 @@ add_action('widgets_init', 'sidebar_widget_bottom');
 
 function sidebar_widget() {
 	register_sidebar(array(
+	  'id' => 'sidebar-widget',
 	  'name' => 'Sidebar Widget',
 	  'class' => '',
 	  'description' => 'This is sidebar Widget',
@@ -134,6 +143,7 @@ add_action('widgets_init', 'sidebar_widget');
 // ----------------- 08. Add homepage widget <top & bottom> -----------------------
 function homepage_widget_top() {
 	register_sidebar(array(
+	  'id' => 'homepage-widget-top',
 	  'name' => 'Homepage Widget Top',
 	  'class' => '',
 	  'description' => 'This is Homepage Widget',
@@ -147,6 +157,7 @@ add_action('widgets_init', 'homepage_widget_top');
 
 function homepage_widget_bottom() {
 	register_sidebar(array(
+	  'id' => 'homepage-widget-bottom',
 	  'name' => 'Homepage Widget Bottom',
 	  'class' => '',
 	  'description' => 'This is Homepage Widget',

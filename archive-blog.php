@@ -4,7 +4,7 @@
   <div class="inner ftb">
     <div id="topic_path" class="clearfix">
       <ul>
-        <li><a href="<?php bloginfo('siteurl'); ?>">HOME</a> &gt; </li>
+        <li><a href="<?php bloginfo('url'); ?>">HOME</a> &gt; </li>
         <li>ブログ一覧</li>
       </ul>
     </div>

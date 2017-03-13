@@ -41,5 +41,5 @@
         echo 'No other users found';
     }
 ?>
-  <p class="btn03 btn"><a href="<?php bloginfo('siteurl') ?>/user-list/">トレージン一覧</a></p>
+  <p class="btn03 btn"><a href="<?php bloginfo('url'); ?>/user-list/">トレージン一覧</a></p>
 </div>

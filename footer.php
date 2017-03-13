@@ -2,7 +2,7 @@
     <div id="footer_top" class="clearfix">
       <div class="inner clearfix">
         <div class="fcol footer_logo clearfix">
-          <p><a href="<?php bloginfo('siteurl'); ?>"><img src="<?php bloginfo('template_url'); ?>/images/logo.png" alt=""><span>トレージン！</span></a></p>
+          <p><a href="<?php bloginfo('url'); ?>"><img src="<?php bloginfo('template_url'); ?>/images/logo.png" alt=""><span>トレージン！</span></a></p>
         </div>
         <div class="fcol flink fcol01 clearfix">
           <?php dynamic_sidebar( 'Footer Menu 1' ); ?>
