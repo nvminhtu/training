@@ -10,7 +10,7 @@
               $author_id = $author->ID;
               $firstname = get_the_author_meta( 'user_firstname', $author_id );
               $lastname = get_the_author_meta( 'user_lastname', $author_id );
-              $fullname = $firstname.' '.$lastname;
+              $fullname = $lastname.' '.$firstname;
               $nicename = get_the_author_meta( 'user_nicename', $author_id );
               $description = get_field('description', 'user_'. $author_id);
               $focus_topic = get_field('focus_topic', 'user_'. $author_id);

@@ -26,7 +26,7 @@
             $author_id = $user->ID;
             $firstname = $user_info->first_name;
             $lastname = $user_info->last_name;
-            $fullname = $firstname.' '.$lastname;
+            $fullname = $lastname.' '.$firstname;
             $editor_avatar_url = get_field('profile_avatar', 'user_'. $user->ID);
             //$editor_avatar_url = $editor_gallery[0]['sizes']['img_author_avatar'];
             echo '<div class="torejin_bx01">';

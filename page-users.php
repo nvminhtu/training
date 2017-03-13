@@ -37,7 +37,7 @@
 			        	$author_id = $user->ID;
 			        	$firstname = get_the_author_meta( 'user_firstname',$author_id );
 		              	$lastname = get_the_author_meta( 'user_lastname', $author_id );
-		             	 $fullname = $firstname.' '.$lastname;
+		             	 $fullname = $lastname.' '.$firstname;
 		              	$nicename = get_the_author_meta( 'user_nicename', $author_id );
 		              	$description = get_field('description', 'user_'. $author_id);
 		              	$focus_topic = get_field('focus_topic', 'user_'. $author_id);
@@ -51,8 +51,8 @@
 		              <div class="list_ct_traijing_ct">
 		                <div class="list_ct_traijing_info clearfix">
 		                  <p class="list_ct_traijing_auther"><?php echo $fullname; ?><span><?php echo $nicename; ?></span></p>
-		                  <p class="traijing_fl">4,672 フォロワー</p>
-		                  <p class="btn_fl"><a href="">+ フォロー</a></p>
+		                  <!-- <p class="traijing_fl">4,672 フォロワー</p>
+		                  <p class="btn_fl"><a href="">+ フォロー</a></p> -->
 		                </div>
 		                <div class="list_ct_traijing_bt clearfix">
 		                  <style>

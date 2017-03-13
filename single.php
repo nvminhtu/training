@@ -14,7 +14,7 @@
 						$author_id = get_the_author_meta('ID');
 						$firstname = get_the_author_meta( 'user_firstname' );
                 		$lastname = get_the_author_meta( 'user_lastname' );
-						$fullname = $firstname.' '.$lastname;
+						$fullname = $lastname.' '.$firstname;
                 		$title_work = get_field('title_of_work', 'user_'. $author_id);
 
                 		//editor information
