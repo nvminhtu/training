@@ -32,7 +32,5 @@
 </body>
 
 <!--Select and manipulate your video-->
-<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/vimeo.player.js"></script>
-<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/video-top.js"></script>
 <?php wp_footer(); ?>
 </html>
