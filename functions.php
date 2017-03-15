@@ -33,6 +33,7 @@ add_image_size( 'img_blog_thumbnail', 640, 9999);
 
 /*** 02.Add included files ***/
 require_once (dirname(__FILE__) . '/includes/add-image-size.php');
+require_once (dirname(__FILE__) . '/includes/metabox.php');
 //require_once (dirname(__FILE__) . '/includes/custom-post-types.php');
 require_once (dirname(__FILE__) . '/includes/widgets.php');
 require_once (dirname(__FILE__) . '/includes/widget-adsense.php');
@@ -134,7 +135,7 @@ if( function_exists('acf_add_options_page') ) {
     'page_title'  => 'Theme General Settings',
     'menu_title'  => 'Theme Settings',
     'menu_slug'   => 'theme-general-settings',
-    'capability'  => 'edit_posts',
+    'capability'  => 'manage_options',
     'redirect'    => false
   ));
 }
@@ -144,4 +145,6 @@ add_action( 'wp_print_scripts', 'my_deregister_javascript', 100 );
 function my_deregister_javascript() {
   wp_deregister_script( 'contact-form-7' );
 }
+
+
 ?>
