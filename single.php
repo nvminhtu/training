@@ -70,7 +70,7 @@
 
 			<?php
 
-				$post_objects = get_field('select_other_blogs',$post->ID);
+				$post_objects = get_post_meta( $post->ID, '_traijing_post_multicheckbox', true );
 
 				if( $post_objects ): ?>
 
