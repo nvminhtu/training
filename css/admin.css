@@ -1,0 +1,10 @@
+#custom_parent {
+	width: 100%;
+}
+.cmb2-id--traijing-post-multicheckbox .cmb2-list {
+	height: 120px;
+	overflow-y: scroll;
+	background: #F1F1F1;
+	border: 1px solid #DDDDDD;
+	padding: 10px;
+}
