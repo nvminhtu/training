@@ -219,4 +219,15 @@ function wpse26980_remove_tools() {
 }
 add_action( 'admin_menu', 'wpse26980_remove_tools', 99 );
 
+// customize wordpress admin widgets
+function customize_dashboard_widgets () {
+ remove_meta_box('dashboard_recent_drafts','dashboard','side'); //Recent Drafts
+ remove_meta_box('dashboard_incoming_links','dashboard','normal'); //Incoming Links
+ remove_meta_box('dashboard_primary','dashboard','side'); // remove Wordpress News
+ remove_meta_box('dashboard_plugins','dashboard','normal'); //Plugins
+ remove_meta_box('dashboard_right_now','dashboard', 'normal'); //Right Now
+ remove_meta_box('pvc_dashboard','dashboard','normal');
+ remove_meta_box('dashboard_recent_comments','dashboard','normal'); //Recent Comments
+}
+add_action('wp_dashboard_setup', 'customize_dashboard_widgets');
 ?>
