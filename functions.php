@@ -150,4 +150,29 @@ function admin_style() {
   wp_enqueue_style('admin-styles', get_template_directory_uri().'/css/admin.css');
 }
 add_action('admin_enqueue_scripts', 'admin_style');
+
+
+/*** 07. Customize Admin Toolbar ***/
+function myplugin_customize_toolbar( $wp_admin_bar ){
+  $user = wp_get_current_user();
+  if ( ! ( $user instanceof WP_User ) ){
+    return;
+  }
+  $my_account = $wp_admin_bar->get_node( 'my-account' );
+  
+  $wp_admin_bar->remove_node( 'wp-logo' );
+  $wp_admin_bar->remove_node( 'display-name' );
+  
+  if ($my_account ){
+    $wp_admin_bar->add_node( array(
+      'parent'    => 'user-actions',
+      'id'    => 'user-url',
+      'title'   => '<span class="user-url">' . __( 'My Website' ) . '</span>',
+      'href'    => esc_url( $user->user_url )
+    ) );
+  }
+}
+add_action( 'admin_bar_menu', 'myplugin_customize_toolbar', 999 );
+
+
 ?>
