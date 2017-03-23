@@ -1,6 +1,7 @@
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
+<title><?php wp_title(' - ', true, 'right'); ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="shortcut icon" href="<?php bloginfo('template_url'); ?>/images/favicon.ico" />
 <meta name="keywords" content="" />

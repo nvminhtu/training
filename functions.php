@@ -230,4 +230,84 @@ function customize_dashboard_widgets () {
  remove_meta_box('dashboard_recent_comments','dashboard','normal'); //Recent Comments
 }
 add_action('wp_dashboard_setup', 'customize_dashboard_widgets');
+
+
+// Hide other posts in wordpress
+add_filter('wp_count_posts', 'wpse149143_wp_count_posts', 10, 3);
+function wpse149143_wp_count_posts( $counts, $type, $perm ) {
+    global $wpdb;
+
+    // We only want to modify the counts shown in admin and depending on $perm being 'readable' 
+    if ( ! is_admin() || 'readable' !== $perm ) {
+        return $counts;
+    }
+
+    // Only modify the counts if the user is not allowed to edit the posts of others
+    $post_type_object = get_post_type_object($type);
+    if (current_user_can( $post_type_object->cap->edit_others_posts ) ) {
+        return $counts;
+    }
+
+    $query = "SELECT post_status, COUNT( * ) AS num_posts FROM {$wpdb->posts} WHERE post_type = %s AND (post_author = %d) GROUP BY post_status";
+    $results = (array) $wpdb->get_results( $wpdb->prepare( $query, $type, get_current_user_id() ), ARRAY_A );
+    $counts = array_fill_keys( get_post_stati(), 0 );
+
+    foreach ( $results as $row ) {
+        $counts[ $row['post_status'] ] = $row['num_posts'];
+    }
+
+    return (object) $counts;
+}
+
+function mine_published_only($views) {
+ 
+  unset($views['sticky']);
+ 
+  return $views;
+}
+ 
+function only_own_posts_parse_query( $wp_query ) {
+    if ( strpos( $_SERVER[ 'REQUEST_URI' ], '/wp-admin/edit.php' ) !== false ) {
+      global $current_user;
+      $wp_query->set( 'author', $current_user->id );
+     }
+}
+ 
+if (current_user_can('editor')) {
+  add_filter('views_edit-post', 'mine_published_only');
+  add_filter('parse_query', 'only_own_posts_parse_query' );
+}
+// End Hide other posts in wordpress
+
+function wpdocs_filter_wp_title( $title, $sep ) {
+    global $paged, $page;
+ 
+    if ( is_feed() )
+        return $title;
+    
+    if ( is_author() ) {
+        $author = get_queried_object();
+        $author_id = $author->ID;
+        $firstname = get_the_author_meta( 'user_firstname', $author_id );
+        $lastname = get_the_author_meta( 'user_lastname', $author_id );
+        $fullname = $lastname.' '.$firstname;
+        $title = $fullname . " $sep";
+    }
+
+    // Add the site name.
+    $title .= get_bloginfo( 'name' );
+ 
+    // Add the site description for the home/front page.
+    $site_description = get_bloginfo( 'description', 'display' );
+    if ( $site_description && ( is_home() || is_front_page() ) )
+        $title = "$title $sep $site_description";
+ 
+    // Add a page number if necessary.
+    if ( $paged >= 2 || $page >= 2 )
+        $title = "$title $sep " . sprintf( __( 'Page %s', 'twentytwelve' ), max( $paged, $page ) );
+ 
+    return $title;
+}
+add_filter( 'wp_title', 'wpdocs_filter_wp_title', 10, 2 );
+
 ?>
