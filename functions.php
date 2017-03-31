@@ -233,6 +233,7 @@ add_action('wp_dashboard_setup', 'customize_dashboard_widgets');
 
 
 // Hide other posts in wordpress
+
 add_filter('wp_count_posts', 'wpse149143_wp_count_posts', 10, 3);
 function wpse149143_wp_count_posts( $counts, $type, $perm ) {
     global $wpdb;
@@ -265,7 +266,8 @@ function mine_published_only($views) {
  
   return $views;
 }
- 
+
+
 function only_own_posts_parse_query( $wp_query ) {
     if ( strpos( $_SERVER[ 'REQUEST_URI' ], '/wp-admin/edit.php' ) !== false ) {
       global $current_user;
@@ -273,10 +275,10 @@ function only_own_posts_parse_query( $wp_query ) {
      }
 }
  
-if (current_user_can('editor')) {
+if (current_user_can('author')) {
   add_filter('views_edit-post', 'mine_published_only');
   add_filter('parse_query', 'only_own_posts_parse_query' );
-}
+} 
 // End Hide other posts in wordpress
 
 function wpdocs_filter_wp_title( $title, $sep ) {
