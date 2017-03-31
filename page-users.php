@@ -24,12 +24,12 @@
 				   $offset= ($paged-1)*$no;
 				}
 
-				$user = array('Editor','Author');
+				$users = array('Editor','Author');
 
 			    $args = array(
-					'role' => 'Editor',
+					'role__not_in' => 'Administrator',
 			        'number' => $no, 
-			        'offset' => $offset,
+			        'offset' => $offset
 			     );
 
 			    $user_query = new WP_User_Query( $args );
@@ -79,14 +79,9 @@
 				// Pagination go here
 				$total_user = $user_query->total_users;  
 	            $total_pages = ceil($total_user/$no);
-				echo paginate_links(array(  
-	              'base' => get_pagenum_link(1) . '%_%',  
-	              'format' => '?paged=%#%',  
-	              'current' => $paged,  
-	              'total' => $total_pages,  
-	              'prev_text' => 'Previous',  
-	              'next_text' => 'Next'  
-	            ));
+
+	            custom_pagination($total_pages);
+	            
 			?>
             
 			</div>
