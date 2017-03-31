@@ -24,6 +24,8 @@
 				   $offset= ($paged-1)*$no;
 				}
 
+				$user = array('Editor','Author');
+
 			    $args = array(
 					'role' => 'Editor',
 			        'number' => $no, 

@@ -3,21 +3,25 @@ $(document).ready(function(e) {
 
 	
 $(function a($){
-	//alert("min");
-	//console.log($('#navi_social').position().top);
-	var $target = $('#s_navi');
-	//var offtet =  $('#navi_social').position();
-	//var min = $('#navi_social').outerHeight() +$('#navi_social').offset().top;
-//	var min = $('#navi_social').offset().top + 340;
-var min = $('#s_navi').offset().top - 5;
-
 	
-//	var w_content = $("#content_blog").width()+50;
-	var max = $('#footer').offset().top - 65 - $target.outerHeight() ;
-	var top = $target.offset().top - min + 30;
+	var $target = $('#s_navi');
+	var min, top, rightTarget; 
 
-	console.log(min);
-	console.log($target.offset().top);
+	if( $('#s_navi').length ) {
+	    min = $('#s_navi').offset().top - 5;
+	} else {
+		min = 0;
+	}
+
+	var max = $('#footer').offset().top - 65 - $target.outerHeight() ;
+	
+	if( $target.length ) {
+	    top = $target.offset().top - min + 30;
+	    rightTarget = $target.offset().left;
+	} else {
+		top = 0;
+	}
+	
 	var $dummy = $('<div/>').css({
 		width: $target.outerWidth() + 'px',
 		height: $target.outerHeight() + 'px'
@@ -25,7 +29,7 @@ var min = $('#s_navi').offset().top - 5;
 		$target.css({
 		position: 'fixed',
 		top: top,
-		right: $target.offset().left
+		right: rightTarget
 	});
 
 	var timer;

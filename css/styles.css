@@ -1254,3 +1254,7 @@ span.wpcf7-not-valid-tip {
 .ls-l{
 	width:100% !important;
 }
+.tag-list {
+	padding: 20px 0;
+	overflow: hidden;
+}
