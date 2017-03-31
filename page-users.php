@@ -16,7 +16,7 @@
 		<div class="ct_article_box clearfix">
           <div class="ct_article_list_out clearfix"> 
           	<?php 
-			  	$no=2;// total no of author to display
+			  	$no=8;// total no of author to display
 				$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 			    if($paged==1){
 			  		$offset=0;  
@@ -81,7 +81,7 @@
 	            $total_pages = ceil($total_user/$no);
 
 	            custom_pagination($total_pages);
-	            
+
 			?>
             
 			</div>

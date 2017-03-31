@@ -8,7 +8,7 @@
   <?php 
     // Create the WP_User_Query object
     $wp_user_query = new WP_User_Query(array (
-        'role' => 'Editor',
+        'role__not_in' => 'Administrator',
         'order' => 'ASC',
         'orderby' => 'display_name',
         'exclude' => array($author_id)
@@ -31,7 +31,15 @@
             //$editor_avatar_url = $editor_gallery[0]['sizes']['img_author_avatar'];
             echo '<div class="torejin_bx01">';
          ?>
-            <p class="torejin_img"><a href="<?php echo get_author_posts_url( $author_id); ?>"><img src="<?php echo $editor_avatar_url; ?>" alt="<?php echo $fullname; ?>" /></a></p>
+            <p class="torejin_img">
+              <a href="<?php echo get_author_posts_url( $author_id); ?>">
+                <?php if($editor_avatar_url!='') { ?>
+                  <img src="<?php echo $editor_avatar_url; ?>" alt="<?php echo $fullname; ?>" />
+                <?php } else { ?>
+                  <img src="<?php bloginfo('template_url'); ?>/images/dummy130x130.jpg" />
+                <?php } ?>
+              </a>
+            </p>
             <p class="torejin_name"><?php echo $fullname; ?></p>
          <?php   
             echo '</div>';
