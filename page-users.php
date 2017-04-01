@@ -27,7 +27,7 @@
 				$users = array('Editor','Author');
 
 			    $args = array(
-					'role__not_in' => 'Administrator',
+					'role' => 'Author',
 			        'number' => $no, 
 			        'offset' => $offset
 			     );
