@@ -8,7 +8,7 @@
   <?php 
     // Create the WP_User_Query object
     $wp_user_query = new WP_User_Query(array (
-        'role__not_in' => 'Administrator',
+        'role' => 'Author',
         'order' => 'ASC',
         'orderby' => 'display_name',
         'exclude' => array($author_id)
