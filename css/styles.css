@@ -1258,3 +1258,7 @@ span.wpcf7-not-valid-tip {
 	padding: 20px 0;
 	overflow: hidden;
 }
+.ct_article_detail img {
+	display: block;
+	margin: 0 auto;
+}
