@@ -9,8 +9,9 @@
 	        <?php
 				if ( have_posts() ) :
 				  	while ( have_posts() ) : the_post();
-				    	$editor_comment = get_field('editor_comment', $post->ID);
 
+				    	$my_excerpt = get_the_excerpt();
+						
 						$author_id = get_the_author_meta('ID');
 						$firstname = get_the_author_meta( 'user_firstname' );
                 		$lastname = get_the_author_meta( 'user_lastname' );
@@ -36,11 +37,10 @@
           	</p>
          	<p class="article_detail_title"><?php the_title(); ?></p>
           		<div class="article_detail_box_cm clearfix">
-          			<?php if($editor_comment!='') { ?>
+          			
 		            <div class="article_detail_cm_pop clearfix">
-		               <?php echo $editor_comment; ?>
+		               <?php the_excerpt(); ?>
 		            </div>
-		            <?php } ?>
 		            <div class="article_detail_cm_au clearfix">
 		              <p class="cm_img">
 		                <?php if( $editor_gallery ): ?>

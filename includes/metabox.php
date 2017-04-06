@@ -28,7 +28,6 @@ function cmb2_sample_metaboxes() {
         'type'       => 'multicheck',
         'options_cb' => 'cmb2_get_your_post_type_post_options',
     ) );
-    // Add other metaboxes as needed
 
 }
 
