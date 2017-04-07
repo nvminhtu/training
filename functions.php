@@ -311,5 +311,3 @@ function wpdocs_filter_wp_title( $title, $sep ) {
     return $title;
 }
 add_filter( 'wp_title', 'wpdocs_filter_wp_title', 10, 2 );
-
-?>
