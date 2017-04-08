@@ -54,8 +54,8 @@
                         if($i<3) {
                       ?>
                         <li>
-                          <?php if($image['sizes']['img_author_slider-width'] < 668 && $image['sizes']['img_author_slider-height']< 500 ) { ?>
-                              <img src="<?php echo $image['sizes']['img_author_slider_fixed']; ?>" alt="<?php echo $image['alt']; ?>"/>
+                          <?php if($image['sizes']['img_author_slider-width'] < 668 && $image['sizes']['img_author_slider-height'] < 500 ) { ?>
+                              <img src="<?php echo $image['sizes']['img_author_slider_h']; ?>" alt="<?php echo $image['alt']; ?>"/>
                           <?php } else if($image['sizes']['img_author_slider-width'] > 668 && $image['sizes']['img_author_slider-height'] > 500 ) { ?>
                               <img src="<?php echo $image['sizes']['img_author_slider_fixed']; ?>" alt="<?php echo $image['alt']; ?>"/>
                           <?php } else if($image['sizes']['img_author_slider-width'] > 668 && $image['sizes']['img_author_slider-height'] < 500 ) { ?>

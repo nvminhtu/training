@@ -29,6 +29,27 @@ function cmb2_sample_metaboxes() {
         'options_cb' => 'cmb2_get_your_post_type_post_options',
     ) );
 
+    $cmb->add_field( array(
+        'name'       => __( 'Select Map Posts', 'cmb2' ),
+        'desc'       => __( 'check locatio marker', 'cmb2' ),
+        'id'         => $prefix . 'google_map',
+        'type'       => 'pw_map'
+    ) );    // Add other metaboxes as needed
+
+    // User form
+     $cmb_user = new_cmb2_box( array(
+        'id'               => $prefix . 'edit',
+        'title'            => esc_html__( 'User Profile Metabox', 'cmb2' ), // Doesn't output for user boxes
+        'object_types'     => array( 'user' ), // Tells CMB2 to use user_meta vs post_meta
+        'show_names'       => true
+    ) );
+    // Add focus topic
+    $cmb_user->add_field( array(
+        'name' => __( 'Focus Topic', 'cmb2' ),
+        'desc' => __( 'Add or remove topic', 'cmb2' ),
+        'id'   => $prefix . 'related_publications',
+        'type' => 'tags',
+    ) );
 }
 
 /**
