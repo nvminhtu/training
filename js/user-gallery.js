@@ -4,6 +4,7 @@ $(document).ready(function(){
 		controls: false,
 		auto: true,
 		pagerCustom: '#tr_slider_pager',
+		responsive: true
 		//adaptiveHeight: true,
 	});
 
