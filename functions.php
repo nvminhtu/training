@@ -311,3 +311,14 @@ function wpdocs_filter_wp_title( $title, $sep ) {
     return $title;
 }
 add_filter( 'wp_title', 'wpdocs_filter_wp_title', 10, 2 );
+
+
+// function general_admin_notice(){
+//     global $pagenow;
+//     if ( $pagenow == 'admin.php' ) {
+//          echo '<div class="notice notice-warning is-dismissible">
+//              <p>This notice appears on the settings page.</p>
+//          </div>';
+//     }
+// }
+// add_action('admin_notices', 'general_admin_notice');

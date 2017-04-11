@@ -51,20 +51,38 @@
                       $i = 0;
                       if( $editor_gallery ): 
                       foreach( $editor_gallery as $image ): 
-                        if($i<3) {
+                        if($i<6) {
+                         
+                          //print_r($image);
                       ?>
                         <li>
-                          <?php if($image['sizes']['img_author_slider-width'] < 668 && $image['sizes']['img_author_slider-height'] < 500 ) { ?>
+                          <?php 
+                            $sWidth = $image['width'];
+                            $sHeight = $image['height'];
+                            $ratio = $sWidth / $sHeight;
+                            $rWidth = 500 * $ratio;
+                          ?>
+                          <?php if($sHeight >= 500) { ?>
+                            <img src="<?php echo $image['sizes']['img_author_slider_w']; ?>" width="<?php echo $rWidth; ?>" alt="<?php echo $image['alt']; ?>"/>
+                          <?php } else { ?>
+                            <img src="<?php echo $image['sizes']['img_author_slider_fixed']; ?>" width="<?php echo $rWidth; ?>" alt="<?php echo $image['alt']; ?>"/>   
+                          <?php } ?>
+
+                          <?php /* if($image['sizes']['img_author_slider-width'] < 668 && $image['sizes']['img_author_slider-height'] < 500 ) { ?>
                               <img src="<?php echo $image['sizes']['img_author_slider_h']; ?>" alt="<?php echo $image['alt']; ?>"/>
+
                           <?php } else if($image['sizes']['img_author_slider-width'] > 668 && $image['sizes']['img_author_slider-height'] > 500 ) { ?>
                               <img src="<?php echo $image['sizes']['img_author_slider_fixed']; ?>" alt="<?php echo $image['alt']; ?>"/>
+
                           <?php } else if($image['sizes']['img_author_slider-width'] > 668 && $image['sizes']['img_author_slider-height'] < 500 ) { ?>
                               <img src="<?php echo $image['sizes']['img_author_slider_w']; ?>" alt="<?php echo $image['alt']; ?>"/>
+
                           <?php } else if ($image['sizes']['img_author_slider-width'] < 668 && $image['sizes']['img_author_slider-height'] > 500 ) { ?>
                               <img src="<?php echo $image['sizes']['img_author_slider_h']; ?>" alt="<?php echo $image['alt']; ?>"/>
+
                           <?php } else  { ?>
                             <img src="<?php echo $image['sizes']['img_author_slider_fixed']; ?>" alt="<?php echo $image['alt']; ?>"/>
-                          <?php } ?>
+                          <?php }  */ ?>
                         </li>  
                       <?php } 
                       $i++; 
@@ -80,7 +98,7 @@
                       $j = 0;
                       if( $editor_gallery ): 
                       foreach( $editor_gallery as $image ): 
-                        if($j<3) {
+                        if($j<6) {
                       ?>
                         <a data-slide-index="<?php echo $j; ?>" href=""> <img src="<?php echo $image['sizes']['img_author_thumb']; ?>" width="58" height="58" alt="<?php echo $image['alt']; ?>" />
                         </a>  
